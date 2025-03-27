@@ -17,5 +17,5 @@
 ## Login y Profile
 - El sistema debe permitir al usuario registrarse en la plataforma
 - El usuario debe poder loguearse con usuario y contraseña
-- El sistema debe automáticamente generar un profile simple
+- El sistema debe automáticamente generar un profile
 - El usuario debe poder editar su profile
