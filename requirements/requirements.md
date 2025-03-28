@@ -7,6 +7,7 @@
 - El sistema debe mostrar buscar avanzada sobre temas.
 - El sistema debe permitir mostrar detalles de la materia.
 - El sistema debe permitir crear temas en cada materia.
+
 - El sistema debe permitir editar temas.
 - El sistema debe permitir guardar temas.
 - El sistema debe permitir borrar temas.
