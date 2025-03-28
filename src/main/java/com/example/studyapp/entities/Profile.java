@@ -26,13 +26,9 @@ public class Profile {
     @CreationTimestamp
     private LocalDateTime createdAt;
 
-    @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToOne
     @JoinColumn(name = "user_id")
     private User user;
-
-    @OneToMany
-    @JoinColumn(name = "profile_id")
-    private List<Course> courses = new ArrayList<>();
 
 
 }

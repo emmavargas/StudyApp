@@ -19,19 +19,19 @@ POST /register
 
 
 
-POST /users/{id}/materias
+POST user/materias
   
   request{
     title: String
 }
 
-GET /users/{id}/materias
+GET user/materias
   
 request{
   title: String
 }
 
-PUT /users/{id}/materias/{id-mat}
+PUT user/materias/{id}
 
 request{
   title: String
@@ -43,7 +43,7 @@ request{
   
   
   
-  POST /users/{id}/materias/{id-mat}/temas
+  POST user/materias/{id-mat}/temas
   
   request{
     title: String

@@ -23,9 +23,12 @@ public class Course {
     @CreationTimestamp
     private LocalDateTime createdAt;
 
-    @OneToMany
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
     @JoinColumn(name = "course_id")
     private List<Topic> topics = new ArrayList<>();
+
+    @Column(nullable = true)
+    private String contentBibliography;
 
 
 }

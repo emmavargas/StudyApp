@@ -16,5 +16,8 @@ public class Topic {
     @Column(unique = true, nullable = false)
     private String title;
 
-    private String content;
+    private String description;
+
+    @Column(nullable = true)
+    private String Bibliography;
 }
