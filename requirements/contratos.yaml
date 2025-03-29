@@ -6,64 +6,61 @@ POST /register
     lastname: String
     password: String
   }
-  response: 200 (ok)
+  response: 200 OK
 
 
-  POST /login
-  request{
+POST /login
+  request {
     username: string
     password: String
 }
-  response: 200 (ok)
-
-
+  response: 200 OK
 
 
 POST user/materias
-  
-  request{
+  request {
     title: String
 }
+  response: 200 OK
+
 
 GET user/materias
-  
-request{
-  title: String
-}
+  response {
+   title: String
+   contentBibliography: String
+} 200 OK
+
 
 PUT user/materias/{id}
+  request {
+   title: String
+} 
+  response: 200 OK
 
-request{
-  title: String
+
+DELETE /users/{id}/materias/{id-mat}
+
+--Aca habria que cambiar como se manejan los temas. Lo dejo sin tocar por las dudas
+POST user/materias/{id-mat}/temas  
+  request {
+    title: String
+    content: String
 }
+  response: 200 OK
 
-  DELETE /users/{id}/materias/{id-mat}
-  
-  
-  
-  
-  
-  POST user/materias/{id-mat}/temas
-  
+GET /users/{id}/materias/{id-mat}/temas
+  response {
+    title: String
+    content: String
+} 200 OK
+
+PUT /users/{id}/materias/{id-mat}/temas/{id-tema}
   request{
     title: String
     content: String
 }
+  response: 200 OK
 
-  GET /users/{id}/materias/{id-mat}/temas
-  
-  request{
-    title: String
-    content: String
-}
-
-  PUT /users/{id}/materias/{id-mat}/temas/{id-tema}
-  
-  request{
-    title: String
-    content: String
-}
-
-  DELETE /users/{id}/materias/{id-mat}/temas/{id-tema}
+DELETE /users/{id}/materias/{id-mat}/temas/{id-tema}
 
 

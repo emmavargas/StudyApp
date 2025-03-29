@@ -19,8 +19,7 @@
 - El sistema debe permitir editar temas.
 - El sistema debe permitir borrar temas.
 - El sistema debe permitir mostrar detalles de la materia.
-- El sistema debe permitir mostrar detalles del topic
-
+- El sistema debe permitir mostrar detalles del topic.
 
 
 ## Implementacion IA para generar examen
@@ -32,7 +31,6 @@
 - El usuario debe poder loguearse con usuario y contraseña
 - El sistema debe automáticamente generar un profile
 - El usuario debe poder editar su profile
-
 
 ## Registro
 - El sistema debe permitir al usuario registrarse en la plataforma
