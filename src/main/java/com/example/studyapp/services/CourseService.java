@@ -173,7 +173,15 @@ public class CourseService {
         return topic;
     }
 
+    @Transactional(readOnly = true)
+    public boolean existsByTitleCourse(String title) {
+        return courseRepository.existsByTitle(title);
+    }
 
+    @Transactional(readOnly = true)
+    public boolean existsByTitleTopic(String title) {
+        return topicRepository.existsByTitle(title);
+    }
 
 
     private String getUsernameContextSecurity() {
@@ -183,4 +191,7 @@ public class CourseService {
         }
         return authentication.getName();
     }
+
+
+
 }

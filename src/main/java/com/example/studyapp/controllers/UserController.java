@@ -1,13 +1,11 @@
 package com.example.studyapp.controllers;
 
-import com.example.studyapp.dtos.UserDto;
+import com.example.studyapp.dtos.UserRegisterDto;
 import com.example.studyapp.dtos.UserLoginDto;
-import com.example.studyapp.entities.User;
 import com.example.studyapp.security.JpaUserDetailsService;
 import com.example.studyapp.security.JwtUtils;
 import com.example.studyapp.services.UserService;
 import jakarta.validation.Valid;
-import org.apache.coyote.Response;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -42,38 +40,36 @@ public class UserController {
 
 
     @PostMapping("/register")
-    public ResponseEntity<?> registerUser(@Valid @RequestBody UserDto userDto, BindingResult result){
+    public ResponseEntity<?> registerUser(@Valid @RequestBody UserRegisterDto userRegisterDto, BindingResult result) {
 
-        if(result.hasErrors()){
+        if (result.hasErrors()) {
             return infoValidation(result);
         }
 
-        userService.saveUser(userDto);
+        userService.saveUser(userRegisterDto);
         return ResponseEntity.ok("Ok");
     }
 
     @PostMapping("/login")
-    public ResponseEntity<?> loginUsername(@Valid @RequestBody UserLoginDto userLoginDto, BindingResult result){
-        if(result.hasErrors()){
+    public ResponseEntity<?> loginUsername(@Valid @RequestBody UserLoginDto userLoginDto, BindingResult result) {
+        if (result.hasErrors()) {
             return infoValidation(result);
         }
 
         try {
-            authenticationManager.authenticate(
-                    new UsernamePasswordAuthenticationToken(userLoginDto.getUsername(), userLoginDto.getPassword())
-            );
+            authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(userLoginDto.getUsername(), userLoginDto.getPassword()));
 
             UserDetails userDetails = jpaUserDetailsService.loadUserByUsername(userLoginDto.getUsername());
 
             String token = jwtUtils.generateToken(userDetails);
 
-            Map<String,Object> response = new HashMap<>();
+            Map<String, Object> response = new HashMap<>();
             response.put("token", "Bearer " + token);
             response.put("user", userDetails.getUsername());
-            response.put("message","Login existosoooo");
+            response.put("message", "Login existosoooo");
 
             return ResponseEntity.ok(response);
-        }catch (AuthenticationException e){
+        } catch (AuthenticationException e) {
             Map<String, Object> error = new HashMap<>();
             error.put("message", "Credenciales inválidas");
             error.put("error", e.getMessage());
@@ -82,10 +78,8 @@ public class UserController {
     }
 
 
-
-
     private ResponseEntity<?> infoValidation(BindingResult bindingResult) {
-        Map<String,String> errors = new HashMap<>();
+        Map<String, String> errors = new HashMap<>();
         bindingResult.getFieldErrors().forEach(err -> {
             errors.put(err.getField(), "El campo " + err.getField() + " " + err.getDefaultMessage());
         });

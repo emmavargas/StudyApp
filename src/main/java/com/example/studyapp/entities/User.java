@@ -1,6 +1,7 @@
 package com.example.studyapp.entities;
 
 import com.example.studyapp.enums.Role;
+import com.example.studyapp.validations.IsExistsUsername;
 import jakarta.persistence.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -17,10 +18,14 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column(unique = true,nullable = false)
+    @IsExistsUsername
     private String username;
 
+    @Column(nullable = false)
     private String password;
 
+    @Column(nullable = false, unique = true)
     private String email;
 
     @Enumerated(EnumType.STRING)

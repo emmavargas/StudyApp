@@ -1,6 +1,9 @@
 package com.example.studyapp.dtos;
 
+import com.example.studyapp.validations.IsExistsUsername;
+import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Size;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -8,13 +11,17 @@ import lombok.NoArgsConstructor;
 @Data
 public class UserRegisterDto {
     @NotBlank
+    @IsExistsUsername
     private String username;
-    @NotBlank
+
+    @Email(message = "Invalid email format")
+    @NotBlank(message = "Email is required")
     private String email;
-    @NotBlank
-    private String password;
-    @NotBlank
+    @NotBlank(message = "Name is required")
     private String name;
-    @NotBlank
+    @NotBlank(message = "Lastname is required")
     private String lastname;
+    @NotBlank(message = "Password is required")
+    @Size(min = 8, message = "Password must be at least 8 characters long")
+    private String password;
 }
