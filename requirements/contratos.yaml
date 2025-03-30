@@ -38,7 +38,7 @@ PUT user/materias/{id}
   response: 200 OK
 
 
-DELETE /users/{id}/materias/{id-mat}
+DELETE /users/materias/{id-mat}
 
 --Aca habria que cambiar como se manejan los temas. Lo dejo sin tocar por las dudas
 POST user/materias/{id-mat}/temas  
@@ -48,19 +48,30 @@ POST user/materias/{id-mat}/temas
 }
   response: 200 OK
 
-GET /users/{id}/materias/{id-mat}/temas
+GET /users/materias/{id-mat}/temas
   response {
     title: String
     content: String
 } 200 OK
 
-PUT /users/{id}/materias/{id-mat}/temas/{id-tema}
+PUT /users/materias/{id-mat}/temas/{id-tema}
   request{
     title: String
     content: String
 }
   response: 200 OK
 
-DELETE /users/{id}/materias/{id-mat}/temas/{id-tema}
+DELETE /users/materias/{id-mat}/temas/{id-tema}
+
+
+
+
+
+
+POST /user/materias/{id-mat}/exam
+   request: {
+    title: String
+    topics: String[]
+   }
 
 

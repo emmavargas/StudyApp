@@ -3,19 +3,18 @@ package com.example.studyapp.validations;
 import com.example.studyapp.services.CourseService;
 import jakarta.validation.ConstraintValidator;
 import jakarta.validation.ConstraintValidatorContext;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 @Component
 public class TopicValidation implements ConstraintValidator<IsExistsTopic, String> {
 
-    private final CourseService courseService;
-
-    public TopicValidation(CourseService courseService) {
-        this.courseService = courseService;
-    }
+    @Autowired
+    private  CourseService courseService;
 
     @Override
     public boolean isValid(String s, ConstraintValidatorContext constraintValidatorContext) {
-        return !courseService.existsByTitleTopic(s);
+       if(courseService ==null) return true;
+       return !courseService.existsByTitleTopic(s);
     }
 }
