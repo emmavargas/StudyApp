@@ -1,9 +1,13 @@
 package com.example.studyapp.services.ai;
 
 import com.example.studyapp.dtos.CourseExamDto;
+import com.example.studyapp.dtos.examChoice.ExamChoiceDto;
 import com.example.studyapp.entities.Course;
 import com.example.studyapp.entities.Topic;
 import com.example.studyapp.services.CourseService;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.JsonMappingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.ai.chat.client.ChatClient;
 import org.springframework.core.io.Resource;
 import org.springframework.core.io.ResourceLoader;
@@ -27,6 +31,24 @@ public class MultipleChoiceExamService {
         this.resourceLoader = resourceLoader;
 
     }
+
+
+    public ExamChoiceDto getMultipleChoice(Long id, CourseExamDto courseExamDto) {
+        String json = generateChoiceExam(id, courseExamDto);
+        json =json.replace("```json", "");
+        json = json.replace("```", "");
+        System.out.println(json);
+        try {
+            ObjectMapper objectMapper = new ObjectMapper();
+            ExamChoiceDto examChoiceDto = objectMapper.readValue(json, ExamChoiceDto.class);
+            return examChoiceDto;
+        } catch (JsonProcessingException e) {
+            throw new RuntimeException(e);
+        }
+
+    }
+
+
 
     public String generateChoiceExam(Long id, CourseExamDto courseExamDto) {
         String data = getDataCourse(id, courseExamDto);
@@ -79,7 +101,6 @@ public class MultipleChoiceExamService {
 
             data.append("\n");
         }
-        System.out.println(data.toString());
         return data.toString();
     }
 

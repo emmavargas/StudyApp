@@ -1,6 +1,7 @@
 package com.example.studyapp.controllers.ai;
 
 import com.example.studyapp.dtos.CourseExamDto;
+import com.example.studyapp.dtos.examChoice.ExamChoiceDto;
 import com.example.studyapp.services.ai.MultipleChoiceExamService;
 import org.springframework.web.bind.annotation.*;
 
@@ -15,9 +16,9 @@ public class MultipleChoiceExamController {
     }
 
     @PostMapping("/{id}/generar-examen")
-    public String generation(@RequestBody CourseExamDto courseExamDto, @PathVariable Long id) {
+    public ExamChoiceDto generation(@RequestBody CourseExamDto courseExamDto, @PathVariable Long id) {
         //System.out.println(courseExamDto.toString());
-        return multipleChoiceExamService.generateChoiceExam(id, courseExamDto);
+        return multipleChoiceExamService.getMultipleChoice(id, courseExamDto);
     }
 
 }
