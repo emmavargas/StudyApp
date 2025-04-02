@@ -5,7 +5,6 @@ StudyHub es un proyecto proveniente de alumnos de la Universidad Nacional del Oe
 
 Motorizado por IA, a partir de estos contenidos podrán generar automáticamente exámenes de práctica para acompañarse durante el estudio. A continuación se documentan detalles básicos del funcionamiento del sistema de StudyHub para acompañar a la lectura del código fuente.
 
-$${\color{red}(Aún \space falta \space cubrir \space el \space módulo \space de \space IA \space en \space este\space documento)}$$
 
 ## Modulos del sistema
 - `Autenticación`: se encarga de la autenticación de usuario (Register, Login)
@@ -27,6 +26,10 @@ $${\color{red}(Aún \space falta \space cubrir \space el \space módulo \space d
 - `UserRegisterDto` permite registrar un usuario enviando username, email, name, lastname y password
 - `CourseDto` permite manipular materias con los campos title y contentBibligraphy
 - `TopicDto` permite manipular temas con los campos title, description y bibliography
+- `CourseExamDto` permite manipular los campos title y topics para la generación de exámenes en base a lo enviado
+- `examChoice/ExamChoiceDto` refiere al multiple choice que se enviará como respuesta. En el mismo se encuentra el titulo del curso al que hace referencia y los temas en base a los cuales hara el examen.
+- `examChoice/ItemChoiceDto` refiere a los items existentes en ExamChoiceDto. Los items tienen una pregunta, opciones y una respuesta.
+- `examChoice/OptionsQuestionDto` refiere a las opciones que tendra cada ItemChoice (4 respuestas, una correcta)
 
 
 ## Services
@@ -49,9 +52,14 @@ $${\color{red}(Aún \space falta \space cubrir \space el \space módulo \space d
 - ### UserService.java
     - `saveUser(UserRegisterDto)` crea un usuario y un perfil asociado a ese usuario, y guarda ambos.
 
+- ### ai/MultipleChoiceExamService.java
+    - `getDataCourse(Long, courseExamDto)` se obtiene el Course mediante el id, y luego, el titulo del mismo y la lista de temas del mismo. Se realiza un filtrado de los temas, usando solo los que se hayan enviado en el DTO. Se devolveran los datos necesarios: Titulo, Bibliografia y Temas que hayan sido recibidos desde el DTO.
+    - `generateChoiceExam(Long, courseExamDto)` se obtienen los datos de la materia utilizando la funcion getDataCourse. Se envia un Prompt que ya esta previamente desarrollado (resources/prompts/system.txt) al chatClient que generará la respuesta (el multiple choice)
+    - `getMultipleChoice(Long, courseExamDto)` se usa la funcion generateChoiceExam con el id del curso y los datos recibidos del DTO. Se obtiene finalmente el ExamChoiceDto completo.
+
 ## Controllers
 
-(Ver ../requirements/contratos.yaml)
+(Ver ../requirements/contratos.yaml para conocer los JSON de cada solicitud)
 
 - ### CourseController.java (`/user`)
     - `POST /courses` agrega un Course a llamando a la función del servicio saveCourse()
@@ -66,4 +74,5 @@ $${\color{red}(Aún \space falta \space cubrir \space el \space módulo \space d
 - ### UserController.java
     - `POST /register` permite registrar un usuario validando los datos de entrada obtenidos del DTO, llamando a la función del servicio saveUser().
     - `POST /login` permite iniciar sesión con un usuario registrado utilizando Spring Security y JSON Web Tokens (JWT).
- 
+- ### ai/MultipleChoiceExamController.java(`/user/courses`)
+    - `POST /{id}/generar-examen` permite obtener el MultipleChoice generandolo desde el servicio de la IA (ver MultipleChoiceExamService.java para ver su flujo de ejecución).

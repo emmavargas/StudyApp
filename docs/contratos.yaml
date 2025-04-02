@@ -1,0 +1,89 @@
+POST /register
+  request {
+    username: String,
+    email: String
+    name: String
+    lastname: String
+    password: String
+  }
+  response: 200 OK
+
+
+POST /login
+  request {
+    username: string
+    password: String
+}
+  response: 200 OK
+
+
+POST user/courses
+  request {
+    title: String,
+    contentBibliography: String
+}
+  response: 200 OK
+
+
+GET user/courses
+  response {
+    id: Long
+    title: String
+    createdAt: LocalDateTime
+    topics: [
+      {
+        id: Long
+        title: String
+        description: String
+        bibliography: String
+      }
+    ]
+    contentBibliography: String
+} 200 OK
+
+
+PUT user/courses/{idCourse}
+  request {
+   title: String
+   contentBibliography: String
+} 
+  response: 200 OK
+
+
+DELETE /users/courses/{idCourse}
+response: 200 OK
+
+POST user/courses/{idCourse}/topics  
+  request {
+    title: String
+    description: String
+    bibliography: String
+}
+  response: 200 OK
+
+GET /user/courses/{idCourse}/topics
+  response {
+    title: String
+    description: String
+    bibliography: String
+} 200 OK
+
+PUT /user/courses/{idCourse/topics/{idTopic}
+  request{
+    title: String
+    description: String
+    bibliography: String
+}
+  response: 200 OK
+
+DELETE /user/courses/{idCourse}/topics/{idTopic}
+response: 200 OK
+
+
+POST /user/courses/{id}/generar-examen
+   request: {
+    title: String
+    topics: String[]
+   }
+
+
