@@ -6,7 +6,6 @@ import com.example.studyapp.entities.Course;
 import com.example.studyapp.entities.Topic;
 import com.example.studyapp.services.CourseService;
 import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.ai.chat.client.ChatClient;
 import org.springframework.core.io.Resource;
