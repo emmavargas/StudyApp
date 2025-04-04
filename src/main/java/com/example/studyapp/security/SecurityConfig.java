@@ -43,8 +43,10 @@ public class SecurityConfig {
                         .requestMatchers("/register", "/login","/user/exam/ai").permitAll()
                         .requestMatchers(
                                 "/style.css",
-                                "/login-study.html",
-                                "/script.js"
+                                "/login.html",
+                                "/register.html",
+                                "/script.js",
+                                "/register.js"
                         ).permitAll()
                         .requestMatchers("/user/**").authenticated()
                         .requestMatchers("/swagger-ui.html", "/swagger-ui/**", "/v3/api-docs/**", "/actuator/**").permitAll()

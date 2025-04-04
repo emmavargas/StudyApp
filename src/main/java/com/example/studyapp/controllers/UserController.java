@@ -47,7 +47,10 @@ public class UserController {
         }
 
         userService.saveUser(userRegisterDto);
-        return ResponseEntity.ok("Ok");
+        Map<String, Object> response = new HashMap<>();
+        response.put("success",true);
+        response.put("message", "Usuario registrado con exito");
+        return ResponseEntity.ok(response);
     }
 
     @PostMapping("/login")

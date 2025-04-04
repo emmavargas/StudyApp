@@ -40,11 +40,92 @@ body {
     padding: 10px;
 }
 
-.login-btn {
-    width:100%;
-    padding: 10px;
-    background-color: #4bb5cf;
-    margin-top: 5px;
+
+
+.register-container {
+    background-color: aliceblue;
+    padding: 5px;
+    border-radius: 15px;
+    box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.2);
+
+}
+
+.register-box {
+    margin: 20px 10px 20px 10px;
+    padding: 20px;
+
+}
+
+.register-box h2 {
+    text-align: center;
+    color: #333;
+    font-size: 25px;
+    margin-bottom: 20px
+}
+
+
+.item-form-fullname {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-bottom: 5px;
+}
+
+.item-form-fullname input {
+    border-radius: 15px;
+    border: 0px;
+    padding: 5px 10px 5px 10px;
+}
+.item-form-fullname label{
+    padding-left: 5px;
+}
+
+
+
+.item-form-user-password {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-bottom: 5px;
+}
+.item-form-user-password input {
+    border-radius: 15px;
+    border: 0px;
+    padding: 5px 10px 5px 10px;
+}
+.item-form-user-password label{
+    padding-left: 5px;
+}
+
+
+
+
+.item-form label {
+    display: block;
+    padding-bottom: 5px;
+    padding-left: 10px;
+}
+
+.item-form input {
+    border-radius: 15px;
+    border: 0px;
+    padding: 5px 10px 5px 10px;
+    width: 100%;
+}
+
+
+.form-btn {
+    width: 100%;
+    padding: 5px;
+    background-color: #9ac1ec;
+    margin-top: 10px;
     border: 0px;
     border-radius: 20px;
+    margin-bottom: 5px;
 }
+
+.login-link {
+    margin: 5px 0px 5px 0px;
+    font-size: 15px;
+}
+
