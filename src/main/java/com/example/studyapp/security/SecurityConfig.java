@@ -46,7 +46,9 @@ public class SecurityConfig {
                                 "/login.html",
                                 "/register.html",
                                 "/script.js",
-                                "/register.js"
+                                "/register.js",
+                                "/",
+                                "/index.html"
                         ).permitAll()
                         .requestMatchers("/user/**").authenticated()
                         .requestMatchers("/swagger-ui.html", "/swagger-ui/**", "/v3/api-docs/**", "/actuator/**").permitAll()
