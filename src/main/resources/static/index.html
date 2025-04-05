@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <title>Study Hub</title>
+</head>
+<body> 
+    <main>
+        <div class="landing-container">
+            <div class="landing-presentation">
+                <h1 id="">StudyHub</h1>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ullam repellat dolorum reiciendis sint, sit hic iste sed magnam aliquam labore illo expedita molestias! Dolorem nemo soluta quos culpa corporis iste!</p>
+            </div>
+            <div class="landing-register">
+                <h1 id="title">Registrarse</h1>
+                <form id="register-form">
+                    <div class="input-nomape">
+                        <label id= "register-labels" for="name">Nombre</label>
+                        <input id="register-inputs" type="text" id="name" placeholder="Ingrese su nombre" required>
+                        <label id= "register-labels" for="lastname">Apellido</label>
+                        <input id="register-inputs" type="text" id="lastname" placeholder="Ingrese su apellido" required>
+                        <label id= "register-labels" for="username">Usuario</label>
+                        <input id="register-inputs" type="text" id="username" placeholder="Ingrese su usuario" required>
+                        <label id= "register-labels" for="password">Contraseña</label>
+                        <input id="register-inputs" type="password" id="password" placeholder="Ingrese su contraseña" required>
+                        <label id= "register-labels" for="email">Email</label>
+                        <input id="register-inputs" type="text" id="email" placeholder="Ingrese su email" required>
+                    </div>
+                    <button type="submit" class="register-button">Registrar</button>
+                    <p class=""><a href="#">¿Ya tienes una cuenta?</a></p>
+                </form>
+                <div id="message"></div>
+            </div>
+        </div>
+    </main>
+</body>
+<script src="register.js"></script>
+
+</html>

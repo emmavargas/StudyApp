@@ -2,7 +2,7 @@ document.getElementById("register-form").addEventListener("submit", function(eve
 
     event.preventDefault();
 
-
+    
     const username = document.getElementById("username").value;
     const password = document.getElementById("password").value;
     const email = document.getElementById("email").value;
@@ -44,7 +44,6 @@ function sendRegisterRequest(username, password,email, name, lastname){
         else{
             document.getElementById("message").innerText = "Registro fallido";
             document.getElementById("message").style.color = "red";
-            document.getElementById("register-form").reset();
             console.log("failed credentials");
         }
     })
