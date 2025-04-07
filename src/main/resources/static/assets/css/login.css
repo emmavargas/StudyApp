@@ -14,31 +14,35 @@ body {
     background-color: whitesmoke;
 }
 
-.login-container {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    min-width: 100%;
-    min-height: 100vh;
-    background-color: white;
-
-}
-
-.login-container .login-box{
+.login-box{
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     max-width: 400px;
     width: 100%;
+    position: relative;
+    left: 30px;
     padding: 20px;
+    transform: translateX(0px);
+    z-index: 2;
     border-radius: 15px;
+    background-color: white;
     box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.2);
+}
+.login-box.front {
+    transform: translateX(0px);
+    z-index: 2;
+}
+.login-box.back {
+    transform: translateX(20px);
+    z-index: 1;
+    opacity: 40%;
 }
 
 
-.login-container .login-box h2 {
+
+.login-box h2 {
     text-align: center;
     color: #333;
     font-size: 25px;
@@ -47,14 +51,14 @@ body {
     font-weight: 700;
 }
 
-.login-container .login-box .input-group {
+.login-box .input-group {
     display: flex;
     flex-direction: column;
     align-items: start;
     justify-content: center;
     width: 100%;
 }
-.login-container .login-box .input-group label {
+.login-box .input-group label {
     display: block;
     font-size: 15px;
     margin-top: 15px;
@@ -64,7 +68,7 @@ body {
     color: rgb(138, 138, 138);
 }
 
-.login-container .login-box .input-group input {
+.login-box .input-group input {
     border-radius: 5px;
     padding: 5px 10px 5px 10px;
     font-family: 'Inter', sans-serif;
@@ -75,7 +79,7 @@ body {
 
 
 
-.login-container .login-box .login-options{
+.login-box .login-options{
     display: flex;
     align-items: center;
     justify-content: center;
