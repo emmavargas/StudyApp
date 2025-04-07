@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>StudyHub</title>
-    <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="assets/css/style.css">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -12,31 +12,49 @@
 
 </head>
 <body>
-    <header>
+    <header class="navbar">
         <div class="logo">
-            <img src="libro.png" alt="Logo de StudyHub">
+            <span>S.H.</span>
             <span>StudyHub</span>
-        
         </div>
-
-        <div class="nav-center">
+        <!--Navbar-->
+        <div class="nav-center" id="nav-center">
             <nav>
-                <a href="#caracteristicas">Caracteristicas</a>
-                <a href="">Como funciona</a>
-                <a href="">Referencias</a>
+                <a id='menu-option' href="#caracteristicas">Caracteristicas</a>
+                <a id='menu-option' href="">Como funciona</a>
+                <a id='menu-option' href="">Referencias</a>
             </nav>
         </div>
-
         <div class="nav-actions">
             <nav>
                 <a href="#login">Iniciar sesion</a>
-                <button type="button" >Registrarse</button>
+                <button type="button">Registrarse</button>
             </nav>
         </div>
+        <div class="burger-menu" id="burger">
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>    
+    <!--Navbar movil-->
+        <nav class="mobilenav" id="mobilenav">
+            <div>
+                <p class="close-menu" id="close-menu">Cerrar</p>
+            </div>
+            <div class="nav-actions-mobile">
+                <a href="#login" id='menu-option-mobile'>Iniciar sesion</a>
+                <button type="button" id='menu-option-mobile'>Registrarse</button>
+            </div>
+            <div class="nav-center-mobile" id="mobileMenu">
+                <a id='menu-option-mobile' href="#caracteristicas">Caracteristicas</a>
+                <a id='menu-option-mobile' href="">Como funciona</a>
+                <a id='menu-option-mobile' href="">Referencias</a>    
+            </div> 
+        </nav>
     </header>
 
+     
     
-
     <main>
         <div class="content-main">
             <h1>Preparate para tus examenes de manera inteligente</h1>
@@ -45,7 +63,7 @@
             <button class="conocer" type="button">Conocer mas</button>
         </div>
         <div class="imagen-principal">
-            <img class="imagen-study" src="study.jpg" alt="Imagend de un multiple choice">
+            <img class="imagen-study" src="assets/img/study.jpg" alt="Imagend de un multiple choice">
         </div>
     </main>
     <section class="caracteristicas" id="caracteristicas">
@@ -57,17 +75,17 @@
         <div  class="caracteristicas-item">
 
             <div class="item">
-                <img src="book.svg" alt="materias">
+                <img src="assets/img/book.svg" alt="materias">
                 <h4>Organiza tus materias</h4>
                 <p>Sube y organiza tus materias, su bibliografia en un solo lugar</p>
             </div>
             <div class="item">
-                <img src="sheet.svg" alt="examenes">
+                <img src="assets/img/sheet.svg" alt="examenes">
                 <h4>Genera examenes</h4>
                 <p>Crea examenes personalizados con inteligencia artificila basada en tu material de estudio</p>
             </div>
             <div class="item">
-                <img src="ok.svg" alt="retroalimentacion">
+                <img src="assets/img/ok.svg" alt="retroalimentacion">
                 <h4>Devolucion de tu examen</h4>
                 <p>Revisa tus respuestas y recibe retroalimentación detallada sobre cada error, para fortalecer tu aprendizaje.</p>
             </div>
@@ -100,4 +118,5 @@
     </section>
 
 </body>
+<script src="assets/js/nav.js"></script>
 </html>
