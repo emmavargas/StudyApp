@@ -522,4 +522,7 @@ section {
         cursor: pointer;
         transition: background-color 0.3s;
     }
+    .nav-actions-mobile button:hover {
+        background-color: #333;
+    }
 }
