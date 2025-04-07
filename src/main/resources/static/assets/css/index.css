@@ -117,6 +117,12 @@ header .logo span {
     cursor: pointer;
     transition: background-color 0.3s;
 }
+.nav-actions button a {
+    color: white;
+}
+.nav-actions button a:visited {
+    color: white;
+}
 button:hover {
     background-color: #333
 }
@@ -368,7 +374,7 @@ section {
 }
 
 .login-container .login-box .input-group input {
-    border-radius: 20px;
+    border-radius: 5px;
     padding: 5px 10px 5px 10px;
     font-family: 'Inter', sans-serif;
     font-weight: 400;
@@ -524,5 +530,11 @@ section {
     }
     .nav-actions-mobile button:hover {
         background-color: #333;
+    }
+    .nav-actions-mobile button a {
+        color: white;
+    }
+    .nav-actions-mobile button a:visited {
+        color: white;
     }
 }
