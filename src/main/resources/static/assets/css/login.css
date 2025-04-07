@@ -30,6 +30,8 @@ body {
     border-radius: 15px;
     background-color: white;
     box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.2);
+    transition: all;
+    transition-duration: 300ms
 }
 .login-box.front {
     transform: translateX(0px);
