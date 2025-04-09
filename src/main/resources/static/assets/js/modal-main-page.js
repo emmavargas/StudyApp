@@ -98,5 +98,3 @@ function createCourseCard(title, bibiliography){
     `;
     return courseCard;
 }
-
-
