@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../assets/css/style-details-course.css">
+    <link rel="stylesheet" href="../assets/css/nav.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Cabin:ital,wght@0,400..700;1,400..700&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Sriracha&display=swap" rel="stylesheet">
+    
+    <title>Document</title>
+</head>
+<body>
+    <div class="fondo-oscuro">
+
+        <header class="navbar">
+            <a href="../index.html">
+                <div class="logo">
+                    <img src="../assets/img/logo.png" alt="logo-img">
+                    <span>StudyHub</span>
+                </div>
+            </a>
+            <!--Navbar-->
+            <div class="nav-center" id="nav-center">
+                <nav>
+                    <a id='menu-option' href="#caracteristicas">Caracteristicas</a>
+                    <a id='menu-option' href="">Como funciona</a>
+                    <a id='menu-option' href="">Referencias</a>
+                </nav>
+            </div>
+            <div class="nav-actions">
+                <nav>
+                    <a href="#auth">Iniciar sesion</a>
+                    <button type="button"><a href="#auth">Registrarse</a></button>
+                </nav>
+            </div>
+            <div class="burger-menu" id="burger">
+                <img id='open-menu' src="../assets/img/menu.svg" alt="open-menu">
+            </div>    
+        <!--Navbar movil-->
+            <nav class="mobilenav" id="mobilenav">
+                <div class="nav-actions-mobile">
+                    <a href="#auth" id='menu-option-mobile'>Iniciar sesion</a>
+                    <button type="button"><a href="#auth">Registrarse</a></button>
+                </div>
+                <div class="nav-center-mobile" id="mobileMenu">
+                    <a id='menu-option-mobile' href="#caracteristicas">Caracteristicas</a>
+                    <a id='menu-option-mobile' href="">Como funciona</a>
+                    <a id='menu-option-mobile' href="">Referencias</a>    
+                </div> 
+            </nav>
+        </header>
+        <main class="main-container"> 
+            <div class="back-course">
+                <button class="back" onclick="window.location.href='main-page.html'">
+                    <img src="../assets/img/back.svg" alt="Ir atras">
+                    <span>Volver a cursos</span>
+                </button>
+            </div>
+            <div class ="title-add-container">
+                <h1>Matematica Discreta</h1>            
+                <button onclick="openModal('create',this)">
+                    <img src="../assets/img/add.svg" alt="agregar curso">
+                    <span>Nuevo Tema</span>
+                </button>
+            </div>
+
+            <div class="bibliography-container">
+                <h2>Bibliografia del curso</h2>
+                <p>Aguilera, N. (2020). Matemáticas Discretas: Fundamentos y Aplicaciones. Editorial Síntesis.</p>
+            </div>
+
+
+            <div class="topics-container">
+                <h3>Temas</h3>
+                <div class="topics-collection">
+
+                    <div class="item-card">
+                        <div class="title-card">
+                            <h4>Lógica Proposicional y Predicados</h4>
+                            <img src="../assets/img/write.svg" alt="editar curso" onclick="openModal('edit',this)">
+                        </div>
+                        <div class="button-group">
+                            <button class="switch-btn active" onclick="switchContent('description',this)">Descripción</button>
+                            <button class="switch-btn" onclick="switchContent('bibliography',this)">Bibliografía</button>
+                        </div>
+                        <p>Estudio de proposiciones, conectores lógicos, tablas de verdad, tautologías, contradicciones, inferencias válidas, cuantificadores y lógica de predicados de primer orden.</p>
+
+                    </div>
+                    <div class="item-card">
+                        <div class="title-card">
+                            <h4>Lógica Proposicional y Predicados</h4>
+                            <img src="../assets/img/write.svg" alt="editar curso" onclick="openModal('edit',this)">
+                        </div>                        <div class="button-group">
+                            <button class="switch-btn active" onclick="switchContent('description',this)">Descripción</button>
+                            <button class="switch-btn" onclick="switchContent('bibliography',this)">Bibliografía</button>
+                        </div>
+                        <p>Estudio de proposiciones, conectores lógicos, tablas de verdad, tautologías, contradicciones, inferencias válidas, cuantificadores y lógica de predicados de primer orden.</p>
+
+                    </div>
+                    <div class="item-card">
+                        <div class="title-card">
+                            <h4>Lógica Proposicional y Predicados</h4>
+                            <img src="../assets/img/write.svg" alt="editar curso" onclick="openModal('edit',this)">
+                        </div>                        <div class="button-group">
+                            <button class="switch-btn active" onclick="switchContent('description',this)">Descripción</button>
+                            <button class="switch-btn" onclick="switchContent('bibliography',this)">Bibliografía</button>
+                        </div>
+                        <p>Estudio de proposiciones, conectores lógicos, tablas de verdad, tautologías, contradicciones, inferencias válidas, cuantificadores y lógica de predicados de primer orden.</p>
+
+                    </div>
+                    
+                </div>
+
+            </div>
+
+        </main>
+
+
+        <div class="modal">
+            <form class="creation-modal">
+                <div class="modal-header">
+                    <h3 id="modal-title">Crear Nuevo Curso</h3>
+                    <span class="close" onclick="closeModal()">&times;</span>
+                </div> 
+                <p>Completa la informacion para crear un nuevo Tema.</p>
+
+                <div class="item-card-modal">
+                    <h4>Titulo de Tema</h4>
+                    <input type="text" placeholder="Ej: Logica Proposicional" required>
+                </div>
+                <div class="item-card-modal">
+                    <h4>descripcion</h4>
+                    <input type="text" placeholder="Estudio de proposiciones, conectores lógicos, tablas de verdad, tautologías, contradicciones, inferencias válidas, cuantificadores y lógica de predicados de primer orden." required>
+                </div>
+                <div class="item-card-modal">
+                    <h4>bibliografia</h4>
+                    <input type="text" placeholder="Aguilera, N. (2020). Matemáticas Discretas: Fundamentos y Aplicaciones. Editorial Síntesis." required>
+                </div>
+        
+                <div class="options-add-close">
+                    <button type="button" class="cancel" onclick="closeModal()">Cancelar</button>
+                    <button class="create">Crear Curso</button>
+                </div>
+            </form>
+        </div>
+
+    </div>
+    <script src="../assets/js/switch-button-details.js"></script>
+    <script src="../assets/js/modal-details.js"></script>
+    <script src="../assets/js/navmaterias.js"></script>
+</body>
+</html>

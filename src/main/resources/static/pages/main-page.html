@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../assets/css/main-page.css">
+    <link rel="stylesheet" href="../assets/css/nav.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Cabin:ital,wght@0,400..700;1,400..700&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Sriracha&display=swap" rel="stylesheet">
+    <title>Materias</title>
+</head>
+<body>
+    <div class="fondo-oscuro">
+        <header class="navbar">
+            <a href="../index.html">
+            <div class="logo">
+                <img src="../assets/img/logo.png" alt="logo-img">
+                <span>StudyHub</span>
+            </div>
+            </a>
+            <!--Navbar-->
+            <div class="nav-center" id="nav-center">
+                <nav>
+                    <a id='menu-option' href="#caracteristicas">Caracteristicas</a>
+                    <a id='menu-option' href="">Como funciona</a>
+                    <a id='menu-option' href="">Referencias</a>
+                </nav>
+            </div>
+            <div class="nav-actions">
+                <nav>
+                    <a href="#auth">Iniciar sesion</a>
+                    <button type="button"><a href="#auth">Registrarse</a></button>
+                </nav>
+            </div>
+            <div class="burger-menu" id="burger">
+                <img id='open-menu' src="../assets/img/menu.svg" alt="open-menu">
+            </div>    
+        <!--Navbar movil-->
+            <nav class="mobilenav" id="mobilenav">
+                <div class="nav-actions-mobile">
+                    <a href="#auth" id='menu-option-mobile'>Iniciar sesion</a>
+                    <button type="button"><a href="#auth">Registrarse</a></button>
+                </div>
+                <div class="nav-center-mobile" id="mobileMenu">
+                    <a id='menu-option-mobile' href="#caracteristicas">Caracteristicas</a>
+                    <a id='menu-option-mobile' href="">Como funciona</a>
+                    <a id='menu-option-mobile' href="">Referencias</a>    
+                </div> 
+            </nav>
+        </header>
+
+        <main class="main-container"> 
+
+            <div class="title-add-container">
+                <h1>Mis Cursos</h1>
+
+                <button onclick="openModal('create')">
+                <img src="../assets/img/add.svg" alt="agregar curso">
+                <span>Nuevo Curso</span>
+                </button>
+            </div>
+    
+            <div class="cursos-container">
+                <div class="cursos-row">
+                    
+                    <div class="cursos-card">
+                        <div class="title-card">
+                            <h2>Matematica Avanzada</h2>
+                            <img src="../assets/img/write.svg" alt="editar curso" onclick="openModal('edit',this)">
+                        </div>
+    
+                        <span>2 temas</span>
+    
+                        <div class="action-card">
+                            <button>Generar examen</button>
+                            <button onclick="redirectionTest()">Ver detalles</button>
+                        </div>
+                    </div>
+
+                    <div class="cursos-card">
+                        <div class="title-card">
+                            <h2>Fisica</h2>
+                            <img src="../assets/img/write.svg" alt="editar curso" onclick="openModal('edit',this)">
+                        </div>
+    
+                        <span>6 temas</span>
+    
+                        <div class="action-card">
+                            <button>Generar examen</button>
+                            <button onclick="redirectionTest()">Ver detalles</button>
+                        </div>
+                    </div>
+
+                    <div class="cursos-card">
+                        <div class="title-card"> 
+                            <h2>Musica</h2>
+                            <img src="../assets/img/write.svg" alt="editar curso" onclick="openModal('edit',this)">
+                        </div>
+    
+                        <span>2 temas</span>
+    
+                        <div class="action-card">
+                            <button>Generar examen</button>
+                            <button onclick="redirectionTest()">Ver detalles</button>
+                        </div>
+                    </div>
+    
+                </div>
+    
+            </div>
+            
+            
+
+        </main>
+
+        <div class="modal">
+            <form class="creation-modal" id="modal-form">
+                <div class="modal-header">
+                    <h3 id="modal-title">Crear Nuevo Curso</h3>
+                    <span class="close" onclick="closeModal()">&times;</span>
+                </div> 
+                <p>Completa la informacion para crear un nuevo curso. Podras agregar temas despues</p>
+
+                <div class="item-course">
+                    <h4>Titulo de curso</h4>
+                    <input id="course-title" type="text" placeholder="Ej: Matemática Discreta" required>
+                </div>
+                <div class="item-course">
+                    <h4>Bibliografia</h4>
+                    <input id="course-bibliography" type="text" placeholder="Aguilera, N. (2020). Matemáticas Discretas: Fundamentos y Aplicaciones. Editorial Síntesis." required>
+                </div>
+        
+                <div class="options-add-close">
+                    <button type="button" class="cancel" onclick="closeModal()">Cancelar</button>
+                    <button type="submit" class="create">Crear Curso</button>
+                </div>
+            </form>
+        </div>
+
+    </div>
+    <script src="../assets/js/main-page.js"></script>
+    <script src="../assets/js/modal-main-page.js"></script>
+    <script src="../assets/js/navmaterias.js"></script>
+</body>
+</html>
