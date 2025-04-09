@@ -320,7 +320,7 @@ a{
 @media screen and (max-width: 768px) {
     .cursos-row {
         display: flex;
-        justify-content: space-between;
+        justify-content: center;
         align-items: stretch;
         flex-wrap: wrap;
         width: 100%;
