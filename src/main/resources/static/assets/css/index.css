@@ -12,13 +12,14 @@ body {
     min-height: 100vh;
     margin: 0;
     background-color: whitesmoke;
+    overflow-x: hidden;
 }
 
 .navbar {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 15px 20px;
+    padding: 10px 10px;
     position: fixed;
     background-color: whitesmoke;
     top: 0;
@@ -26,71 +27,57 @@ body {
     z-index: 1000;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
-
 .nav-center {
     display: flex;
     gap: 20px;
+    align-items: center;
+    justify-content: center;
 }
-.mobilenav {
-    display: none;
-}
-
-.nav-center a {
-    text-decoration: none;
-    color: #333;
-    font-weight: 500;
-}
-
 .burger-menu {
     display: none;
     flex-direction: column;
-    gap: 5px;
     cursor: pointer;
 }
-
-.burger-menu span {
-    width: 25px;
-    height: 3px;
-    background-color: #333;
-    border-radius: 2px;
-}
-.close-menu {
-    cursor: pointer;
-    display: none;
-    padding: 10px;
+#open-menu {
+    width: 30px;
+    height: 30px;
 }
 #menu-option-mobile {
     padding: 10px;
     transition: all;
-    border-radius: 10px;
+    border-radius: 5px;
     transition-duration: 300ms;
 }
-#menu-option-mobile:hover {
-    background-color: black;
-    color: white;
-}
-
 header .logo span {
     font-family: 'Inter', sans-serif;
-    font-weight: 700;
+    font-weight: 600;
 }
-
 .logo{
     display: flex;
     align-items: center;
     justify-content: flex-start;
     gap: 10px;
 }
-.nav-center {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+.logo img {
+    width: 50px;
+    height: 50px;
+}
+.mobilenav {
+    display: none;
+}
+.nav-center a {
+    text-decoration: none;
+    color: #444;
+    font-weight: 500;
+    transition: all 300ms
+}
+.nav-center a:hover {
+    color: black
 }
 .nav-center nav {
     display: flex;
     gap: 15px;
 }
-
 .nav-actions {
     display: flex;
     align-items: center;
@@ -105,7 +92,6 @@ header .logo span {
     align-items: center;
     justify-content: center;
 }
-
 .nav-actions button {
     background-color: black;
     color: white;
@@ -127,7 +113,6 @@ header .logo span {
 button:hover {
     background-color: #333
 }
-
 a{
     text-decoration: none;
     color: black;
@@ -135,10 +120,8 @@ a{
     font-weight: 500;
     font-size: 15px;
 }
-
-.logo img {
-    width: 30px;
-    height: 30px;
+a:hover {
+    text-decoration: underline;
 }
 
 main {
@@ -146,17 +129,12 @@ main {
     align-items: center;
     justify-content: center;
     padding: 20px;
-    margin: 0 auto;
-    max-width: 1400px;
-    flex: 1;
-    min-height: 100vh;
+    margin-top: 50px;
 }
-
-
 .content-main {
     font-size: 40px;
     min-width: 50%;
-
+    margin-top: 10%;
 }
 .content-main h1 {
     font-family: 'Inter', sans-serif;
@@ -238,8 +216,7 @@ section {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    padding-top: 150px;
-    padding-bottom: 150px;
+    padding: 100px 20px 100px 20px;
 }
 
 .caracteristicas .caracteristicas-titulos {
@@ -328,6 +305,13 @@ section {
         align-items: center;
         justify-content: center;
         padding: 20px;
+    }
+    .content-main h1,
+    .content-main p {
+        padding-right: 0;
+    }
+    .content-main {
+        min-width: 100%;
     }
     
     .imagen-principal {
