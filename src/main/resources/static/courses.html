@@ -61,9 +61,9 @@
         <article class="secondary-header">
             <div class="my-courses">
                 <h1>Mis cursos</h1>
-                <p>3 cursos</p>
+                <p>1 curso</p>
             </div>
-            <button>
+            <button id="new-course-button">
                 <img src="./assets/img/add.svg" alt="add">
                 <p>Nuevo curso</p>
             </button>
@@ -74,39 +74,54 @@
                     <div>
                         <h1>Titulo del curso</h1>
                         <p>3 temas</p>
+                        <hr>
+                        <p>Bibliografia:</p>
+                        <p class="bibliografia">Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatum, necessitatibus!</p>  
                     </div>
                     <div class="course-controllers">
-                        <img src="./assets/img/delete.svg" alt="">
-                        <img src="./assets/img/edit.svg" alt="">
+                        <img src="./assets/img/delete.svg" class="delete-btn" id='delete' alt="">
+                        <img src="./assets/img/edit.svg" class="edit-btn" id="edit" alt="">
                     </div>
-                </div> 
-            </div>
-            <div class="course">
-                <div class="course-header">
-                    <div>
-                        <h1>Titulo del curso</h1>
-                        <p>3 temas</p>
-                    </div>
-                    <div class="course-controllers">
-                        <img src="./assets/img/delete.svg" alt="">
-                        <img src="./assets/img/edit.svg" alt="">
-                    </div>
-                </div> 
-            </div>
-            <div class="course">
-                <div class="course-header">
-                    <div>
-                        <h1>Titulo del curso</h1>
-                        <p>3 temas</p>
-                    </div>
-                    <div class="course-controllers">
-                        <img src="./assets/img/delete.svg" alt="">
-                        <img src="./assets/img/edit.svg" alt="">
-                    </div>
-                </div> 
+                </div>
+                <div class="course-buttons">
+                    <button>Generar examen</button>
+                    <button>Ver temas</button>
+                </div>
             </div>
         </article>
     </main>
+    <div id="create-modal" class="modal hidden">
+        <div class="modal-content">
+            <h2>Nuevo Curso</h2>
+            <label>
+                <p>Título del curso:</p>
+                <input type="text" id="new-title" placeholder="Título del curso">
+            </label>
+            <label>
+                <p>Bibliografía:</p>
+                <input type="text" id="new-biblio" placeholder="Bibliografía">
+            </label>
+            
+            <button id="create-course">Crear</button>
+            <button class="close-modal">Cancelar</button>
+        </div>
+    </div>
+    <div id="edit-modal" class="modal hidden">
+        <div class="modal-content">
+            <h2>Editar Curso</h2>
+            <label>
+                <p>Título del curso:</p>
+                <input type="text" id="edit-title">
+            </label>
+            <label>
+                <p>Bibliografía:</p>
+                <input type="text" id="edit-biblio">
+            </label>
+            <button id="save-edit">Guardar</button>
+            <button class="close-modal">Cancelar</button>
+        </div>
+    </div>
 </body>
 <script src="assets/js/nav.js"></script>
+<script src="assets/js/courses.js"></script>
 </html>
