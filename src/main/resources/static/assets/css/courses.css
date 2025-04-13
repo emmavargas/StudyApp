@@ -1,0 +1,105 @@
+* {
+    font-family: 'Inter', sans-serif;
+}
+#action-button-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#logout {
+    background-color: whitesmoke;
+    color: #EA3323;
+    font-size: 14px;
+    padding: 0;
+}
+main {
+    flex-direction: column;
+    gap: 15px;
+}
+.secondary-header {
+    margin-top: 20px;
+    display: flex;
+    align-items: center;
+    width: 80%;
+    padding: 0px 40px 0px 40px;
+    justify-content: space-between;
+}
+.secondary-header div h1 {
+    font-size: 30px;
+}
+.secondary-header button {
+    background-color: black;
+    color: white;
+    font-family: 'Inter', sans-serif;
+    display: flex;
+    font-weight: 600;
+    font-size: 15px;
+    padding: 0px 15px 0px 10px;
+    margin: 15px 5px 5px 0px;
+    border-radius: 5px;
+    border: 0;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+.secondary-header button:hover {
+    background-color: #333
+}
+.my-courses p {
+    color: #333
+}
+.courses-container {
+    width: 100%;
+    display: flex;
+    gap: 30px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+.course {
+    width: 40%;
+    padding: 20px;
+    box-shadow: 1px 1px 5px 1px rgb(189, 189, 189);
+}
+.course-header {
+    display: flex;
+    justify-content: space-around;
+}
+.course p {
+    color: #333
+}
+.course-controllers img{
+    background-color: #222222;
+    color: white;
+    font-family: 'Inter', sans-serif;
+    padding: 5px 5px 5px 5px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+.course-controllers img:hover{
+    background-color: black;
+}
+.course-buttons {
+    display: flex;
+    justify-content: space-around;
+}
+.course-buttons button {
+    background-color: #cfcfcf;
+    color: black;
+    font-family: 'Inter', sans-serif;
+    font-weight: 400;
+    font-size: 15px;
+    padding: 10px 20px 10px 20px;
+    border-radius: 5px;
+    margin-top: 10px;
+    border: 0;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+.course-buttons button:hover {
+    background-color: rgb(187, 187, 187);
+}
+@media screen and (max-width: 860px) {
+    .course {
+        width: 100%;
+    }
+}
