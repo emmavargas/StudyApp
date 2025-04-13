@@ -30,7 +30,7 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
         String header = request.getHeader("Authorization");
         if (header != null && header.startsWith("Bearer ")) {
             String token = header.replace("Bearer ", "");
-
+            System.out.println("Validando token: " + token);
             if (jwtUtils.isTokenValid(token)) {
                 String username = jwtUtils.user(token);
                 List<String> roles = jwtUtils.role(token);
@@ -40,8 +40,13 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
                 UsernamePasswordAuthenticationToken auth = new UsernamePasswordAuthenticationToken(username, null, authorities);
 
                 SecurityContextHolder.getContext().setAuthentication(auth);
+                System.out.println("token validado: " + token);
             }
+        }else {
+            System.out.println("Token inválido o ausente");
+
         }
+
         filterChain.doFilter(request,response);
     }
 }

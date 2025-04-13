@@ -8,6 +8,7 @@ import com.example.studyapp.services.CourseService;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.ai.chat.client.ChatClient;
+import org.springframework.context.annotation.Primary;
 import org.springframework.core.io.Resource;
 import org.springframework.core.io.ResourceLoader;
 import org.springframework.stereotype.Service;
@@ -16,15 +17,16 @@ import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.util.List;
 
+@Primary
 @Service
-public class MultipleChoiceExamService {
+public class MultipleChoiceExamAiServiceImpl implements MultipleChoiceService{
 
     private final ChatClient chatClient;
 
     private final ResourceLoader resourceLoader;
     private final CourseService courseService;
 
-    public MultipleChoiceExamService(ChatClient.Builder chatClient, CourseService courseService, ResourceLoader resourceLoader) {
+    public MultipleChoiceExamAiServiceImpl(ChatClient.Builder chatClient, CourseService courseService, ResourceLoader resourceLoader) {
         this.chatClient = chatClient.build();
         this.courseService= courseService;
         this.resourceLoader = resourceLoader;
@@ -36,7 +38,6 @@ public class MultipleChoiceExamService {
         String json = generateChoiceExam(id, courseExamDto);
         json =json.replace("```json", "");
         json = json.replace("```", "");
-        System.out.println(json);
         try {
             ObjectMapper objectMapper = new ObjectMapper();
             ExamChoiceDto examChoiceDto = objectMapper.readValue(json, ExamChoiceDto.class);
@@ -48,15 +49,12 @@ public class MultipleChoiceExamService {
     }
 
 
-
     public String generateChoiceExam(Long id, CourseExamDto courseExamDto) {
         String data = getDataCourse(id, courseExamDto);
         Resource resource = resourceLoader.getResource("classpath:prompts/system.txt");
         String content="";
         try {
             content = new String(resource.getInputStream().readAllBytes(), StandardCharsets.UTF_8);
-            //System.out.println(data);
-            //System.out.println(content);
             return this.chatClient.prompt()
                     .user(data)
                     .system(content)
@@ -73,17 +71,11 @@ public class MultipleChoiceExamService {
         String titleCourse = course.getTitle();
         List<Topic> topics = course.getTopics();
 
-        System.out.println(topics.isEmpty());
-
         String topicsX = String.join(",", courseExamDto.getTopics());
-
-        System.out.println(topicsX);
 
         List<Topic> topics2 = topics.stream().filter(topic ->
                 topic.getTitle().contains(topicsX)
                 ).toList();
-
-        System.out.println(topics2.isEmpty());
 
         StringBuilder data = new StringBuilder();
         data.append("Titulo: ").append(titleCourse).append("\n");
@@ -91,12 +83,9 @@ public class MultipleChoiceExamService {
         data.append("Temas:").append("\n");
         for(Topic topic : topics2) {
            data.append(topic.getTitle()).append("\n");
-            System.out.println(data.toString());
            data.append(topic.getDescription()).append("\n");
-            System.out.println(data.toString());
 
             data.append(topic.getBibliography()).append("\n");
-            System.out.println(data.toString());
 
             data.append("\n");
         }
