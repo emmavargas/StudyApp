@@ -7,7 +7,12 @@ import com.example.studyapp.entities.Topic;
 import com.example.studyapp.services.CourseService;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import org.springframework.ai.chat.client.ChatClient;
+import com.google.cloud.vertexai.VertexAI;
+import com.google.cloud.vertexai.api.GenerateContentResponse;
+import com.google.cloud.vertexai.api.GenerationConfig;
+import com.google.cloud.vertexai.generativeai.ContentMaker;
+import com.google.cloud.vertexai.generativeai.GenerativeModel;
+import com.google.cloud.vertexai.generativeai.ResponseHandler;
 import org.springframework.context.annotation.Primary;
 import org.springframework.core.io.Resource;
 import org.springframework.core.io.ResourceLoader;
@@ -16,18 +21,16 @@ import org.springframework.stereotype.Service;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.util.List;
+import java.util.concurrent.*;
 
-@Primary
+//@Primary
 @Service
 public class MultipleChoiceExamAiServiceImpl implements MultipleChoiceService{
-
-    private final ChatClient chatClient;
 
     private final ResourceLoader resourceLoader;
     private final CourseService courseService;
 
-    public MultipleChoiceExamAiServiceImpl(ChatClient.Builder chatClient, CourseService courseService, ResourceLoader resourceLoader) {
-        this.chatClient = chatClient.build();
+    public MultipleChoiceExamAiServiceImpl(CourseService courseService, ResourceLoader resourceLoader) {
         this.courseService= courseService;
         this.resourceLoader = resourceLoader;
 
@@ -55,13 +58,46 @@ public class MultipleChoiceExamAiServiceImpl implements MultipleChoiceService{
         String content="";
         try {
             content = new String(resource.getInputStream().readAllBytes(), StandardCharsets.UTF_8);
-            return this.chatClient.prompt()
-                    .user(data)
-                    .system(content)
-                    .call()
-                    .content();
         } catch (IOException e) {
             throw new RuntimeException("Error al leer el archivo system.txt", e);
+        }
+        String fullPrompt = content + "\n\n" + data;
+
+        String projectId = "gen-lang-client-0183330281";
+        String location = "us-central1";
+        String modelName = "gemini-2.0-flash-001";
+
+        try (VertexAI vertexAI = new VertexAI(projectId, location)) {
+
+            GenerationConfig config = GenerationConfig.newBuilder()
+                    .setTemperature(0.7f)
+                    .setMaxOutputTokens(3000)
+                    .build();
+
+            GenerativeModel model = new GenerativeModel.Builder()
+                    .setModelName(modelName)
+                    .setVertexAi(vertexAI)
+                    .setGenerationConfig(config)
+                    .setSystemInstruction(ContentMaker.fromString(content))
+                    .build();
+
+            ExecutorService executor = Executors.newSingleThreadExecutor();
+            Future<String> future = executor.submit(() -> {
+                GenerateContentResponse response = model.generateContent(fullPrompt);
+                return ResponseHandler.getText(response);
+            });
+
+            try {
+                // Esperamos máximo 10 segundos
+                return future.get(8, TimeUnit.SECONDS);
+            } catch (TimeoutException e) {
+                future.cancel(true);
+                throw new RuntimeException("Tiempo de espera agotado: el modelo tardó demasiado en responder.", e);
+            } catch (Exception e) {
+                throw new RuntimeException("Error al generar el examen con Vertex AI", e);
+            } finally {
+                executor.shutdownNow();
+            }
         }
     }
 

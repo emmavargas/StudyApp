@@ -5,6 +5,8 @@ import com.example.studyapp.dtos.examChoice.ExamChoiceDto;
 import com.example.studyapp.services.ai.MultipleChoiceExamAiServiceImpl;
 import com.example.studyapp.services.ai.MultipleChoiceService;
 import com.fasterxml.jackson.core.JsonProcessingException;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -18,10 +20,16 @@ public class MultipleChoiceExamController {
     }
 
     @PostMapping("/{id}/generar-examen")
-    public ExamChoiceDto generation(@RequestBody CourseExamDto courseExamDto, @PathVariable Long id) throws JsonProcessingException {
+    public ResponseEntity<?> generation(@RequestBody CourseExamDto courseExamDto, @PathVariable Long id) throws JsonProcessingException {
         //System.out.println(courseExamDto.toString());
-        System.out.println("Solicitud recibida en generateExam para id: " + id);
-        return multipleChoiceService.getMultipleChoice(id, courseExamDto);
+        try {
+            ExamChoiceDto examChoiceDto = multipleChoiceService.getMultipleChoice(id, courseExamDto);
+            System.out.println(multipleChoiceService.getMultipleChoice(id, courseExamDto));
+            return ResponseEntity.ok(examChoiceDto);
+        }catch (RuntimeException e){
+            System.out.println(e.getMessage());
+            return ResponseEntity.status(HttpStatus.GATEWAY_TIMEOUT).body(e.getMessage());
+        }
     }
 
 }

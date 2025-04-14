@@ -7,7 +7,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Service;
 
-//@Primary
+@Primary
 @Service
 public class MultipleChoiceExamStaticImpl implements MultipleChoiceService{
 
@@ -20,104 +20,104 @@ public class MultipleChoiceExamStaticImpl implements MultipleChoiceService{
                 "    ],\n" +
                 "    \"items\": [\n" +
                 "        {\n" +
-                "            \"question\": \"¿Cuál de las siguientes proposiciones es una tautología?\",\n" +
-                "            \"options\": {\n" +
-                "                \"option1\": \"p ∧ ¬p\",\n" +
-                "                \"option2\": \"p → q\",\n" +
-                "                \"option3\": \"p ∨ ¬p\",\n" +
-                "                \"option4\": \"p ∧ q\"\n" +
-                "            },\n" +
-                "            \"answer\": \"p ∨ ¬p\"\n" +
+                "            \"question\": \"¿Cuál de las siguientes opciones representa la negación de la proposición 'Todos los números pares son divisibles por 2'?\",\n" +
+                "            \"options\": [\n" +
+                "                \"Ningún número par es divisible por 2.\",\n" +
+                "                \"Algunos números pares no son divisibles por 2.\",\n" +
+                "                \"Todos los números impares son divisibles por 2.\",\n" +
+                "                \"Algunos números pares son divisibles por 2.\"\n" +
+                "            ],\n" +
+                "            \"answer\": \"Algunos números pares no son divisibles por 2.\"\n" +
                 "        },\n" +
                 "        {\n" +
-                "            \"question\": \"¿Cuál de las siguientes opciones representa la negación correcta de la proposición 'Todos los gatos son negros'?\",\n" +
-                "            \"options\": {\n" +
-                "                \"option1\": \"Ningún gato es negro\",\n" +
-                "                \"option2\": \"Algunos gatos no son negros\",\n" +
-                "                \"option3\": \"Todos los gatos son blancos\",\n" +
-                "                \"option4\": \"Existe un gato que es negro\"\n" +
-                "            },\n" +
-                "            \"answer\": \"Algunos gatos no son negros\"\n" +
+                "            \"question\": \"Si p es verdadero y q es falso, ¿cuál es el valor de verdad de la proposición compuesta (p ∧ q) → ¬q?\",\n" +
+                "            \"options\": [\n" +
+                "                \"Verdadero\",\n" +
+                "                \"Falso\",\n" +
+                "                \"No se puede determinar\",\n" +
+                "                \"Depende del contexto\"\n" +
+                "            ],\n" +
+                "            \"answer\": \"Verdadero\"\n" +
                 "        },\n" +
                 "        {\n" +
-                "            \"question\": \"Si p es verdadero y q es falso, ¿cuál es el valor de verdad de la proposición (p → q) ∨ (¬p ∧ q)?\",\n" +
-                "            \"options\": {\n" +
-                "                \"option1\": \"Verdadero\",\n" +
-                "                \"option2\": \"Falso\",\n" +
-                "                \"option3\": \"No se puede determinar\",\n" +
-                "                \"option4\": \"Depende del contexto\"\n" +
-                "            },\n" +
-                "            \"answer\": \"Falso\"\n" +
+                "            \"question\": \"¿Cuál de las siguientes leyes lógicas permite simplificar la expresión (A ∨ A)?\",\n" +
+                "            \"options\": [\n" +
+                "                \"Ley de la doble negación\",\n" +
+                "                \"Ley de idempotencia\",\n" +
+                "                \"Ley de absorción\",\n" +
+                "                \"Ley de De Morgan\"\n" +
+                "            ],\n" +
+                "            \"answer\": \"Ley de idempotencia\"\n" +
                 "        },\n" +
                 "        {\n" +
-                "            \"question\": \"¿Cuál de las siguientes leyes lógicas permite simplificar la expresión (p ∧ q) ∨ (p ∧ ¬q)?\",\n" +
-                "            \"options\": {\n" +
-                "                \"option1\": \"Ley de Morgan\",\n" +
-                "                \"option2\": \"Ley de absorción\",\n" +
-                "                \"option3\": \"Ley distributiva\",\n" +
-                "                \"option4\": \"Ley de idempotencia\"\n" +
-                "            },\n" +
-                "            \"answer\": \"Ley distributiva\"\n" +
+                "            \"question\": \"La expresión 'Si llueve, entonces la calle se moja' es equivalente a:\",\n" +
+                "            \"options\": [\n" +
+                "                \"Llueve si y solo si la calle se moja.\",\n" +
+                "                \"Si la calle se moja, entonces llueve.\",\n" +
+                "                \"No llueve o la calle se moja.\",\n" +
+                "                \"Si no llueve, entonces la calle no se moja.\"\n" +
+                "            ],\n" +
+                "            \"answer\": \"No llueve o la calle se moja.\"\n" +
                 "        },\n" +
                 "        {\n" +
-                "            \"question\": \"¿Cuál de los siguientes conectivos lógicos es asociativo?\",\n" +
-                "            \"options\": {\n" +
-                "                \"option1\": \"→ (Implicación)\",\n" +
-                "                \"option2\": \"¬ (Negación)\",\n" +
-                "                \"option3\": \"∨ (Disyunción)\",\n" +
-                "                \"option4\": \"⊕ (O exclusivo)\"\n" +
-                "            },\n" +
-                "            \"answer\": \"∨ (Disyunción)\"\n" +
+                "            \"question\": \"¿Qué tipo de razonamiento se utiliza cuando se llega a una conclusión general a partir de observaciones específicas?\",\n" +
+                "            \"options\": [\n" +
+                "                \"Deductivo\",\n" +
+                "                \"Inductivo\",\n" +
+                "                \"Abductivo\",\n" +
+                "                \"Analógico\"\n" +
+                "            ],\n" +
+                "            \"answer\": \"Inductivo\"\n" +
                 "        },\n" +
                 "        {\n" +
-                "            \"question\": \"Si la proposición 'Si llueve, entonces la calle se moja' es verdadera, ¿cuál de las siguientes proposiciones también debe ser verdadera?\",\n" +
-                "            \"options\": {\n" +
-                "                \"option1\": \"Si la calle se moja, entonces llueve\",\n" +
-                "                \"option2\": \"Si la calle no se moja, entonces no llueve\",\n" +
-                "                \"option3\": \"Si no llueve, entonces la calle no se moja\",\n" +
-                "                \"option4\": \"Llueve y la calle se moja\"\n" +
-                "            },\n" +
-                "            \"answer\": \"Si la calle no se moja, entonces no llueve\"\n" +
+                "            \"question\": \"¿Cuál de las siguientes expresiones representa la ley de De Morgan para la negación de una conjunción?\",\n" +
+                "            \"options\": [\n" +
+                "                \"¬(p ∧ q) ≡ ¬p ∧ ¬q\",\n" +
+                "                \"¬(p ∧ q) ≡ ¬p ∨ ¬q\",\n" +
+                "                \"¬(p ∨ q) ≡ ¬p ∨ ¬q\",\n" +
+                "                \"¬(p ∨ q) ≡ ¬p ∧ ¬q\"\n" +
+                "            ],\n" +
+                "            \"answer\": \"¬(p ∧ q) ≡ ¬p ∨ ¬q\"\n" +
                 "        },\n" +
                 "        {\n" +
-                "            \"question\": \"¿Cuál de las siguientes expresiones representa la forma lógica de 'p es necesario para q'?\",\n" +
-                "            \"options\": {\n" +
-                "                \"option1\": \"p → q\",\n" +
-                "                \"option2\": \"q → p\",\n" +
-                "                \"option3\": \"p ↔ q\",\n" +
-                "                \"option4\": \"¬p → ¬q\"\n" +
-                "            },\n" +
-                "            \"answer\": \"q → p\"\n" +
+                "            \"question\": \"En lógica proposicional, ¿qué significa que una proposición sea una tautología?\",\n" +
+                "            \"options\": [\n" +
+                "                \"Que siempre es falsa.\",\n" +
+                "                \"Que siempre es verdadera.\",\n" +
+                "                \"Que puede ser verdadera o falsa dependiendo del contexto.\",\n" +
+                "                \"Que no tiene valor de verdad definido.\"\n" +
+                "            ],\n" +
+                "            \"answer\": \"Que siempre es verdadera.\"\n" +
                 "        },\n" +
                 "        {\n" +
-                "            \"question\": \"¿Qué regla de inferencia se utiliza para deducir q de las premisas p → q y p?\",\n" +
-                "            \"options\": {\n" +
-                "                \"option1\": \"Modus Tollens\",\n" +
-                "                \"option2\": \"Modus Ponens\",\n" +
-                "                \"option3\": \"Silogismo Hipotético\",\n" +
-                "                \"option4\": \"Dilema Constructivo\"\n" +
-                "            },\n" +
-                "            \"answer\": \"Modus Ponens\"\n" +
+                "            \"question\": \"¿Cuál de las siguientes inferencias es un ejemplo de Modus Ponens?\",\n" +
+                "            \"options\": [\n" +
+                "                \"Si p → q y ¬q, entonces ¬p.\",\n" +
+                "                \"Si p → q y p, entonces q.\",\n" +
+                "                \"Si ¬p → ¬q y q, entonces p.\",\n" +
+                "                \"Si p ∨ q y ¬p, entonces q.\"\n" +
+                "            ],\n" +
+                "            \"answer\": \"Si p → q y p, entonces q.\"\n" +
                 "        },\n" +
                 "        {\n" +
-                "            \"question\": \"¿Cuál de las siguientes afirmaciones es equivalente a 'No es cierto que Juan es alto y Pedro es bajo'?\",\n" +
-                "            \"options\": {\n" +
-                "                \"option1\": \"Juan no es alto y Pedro no es bajo\",\n" +
-                "                \"option2\": \"Juan es alto o Pedro es bajo\",\n" +
-                "                \"option3\": \"Juan no es alto o Pedro no es bajo\",\n" +
-                "                \"option4\": \"Juan es bajo y Pedro es alto\"\n" +
-                "            },\n" +
-                "            \"answer\": \"Juan no es alto o Pedro no es bajo\"\n" +
+                "            \"question\": \"Si una proposición y su negación son ambas verdaderas, ¿qué principio lógico se viola?\",\n" +
+                "            \"options\": [\n" +
+                "                \"Principio de identidad\",\n" +
+                "                \"Principio de no contradicción\",\n" +
+                "                \"Principio del tercero excluido\",\n" +
+                "                \"Principio de razón suficiente\"\n" +
+                "            ],\n" +
+                "            \"answer\": \"Principio de no contradicción\"\n" +
                 "        },\n" +
                 "        {\n" +
-                "            \"question\": \"¿Qué nombre recibe la falacia que consiste en asumir que porque dos eventos ocurren juntos, uno causa al otro?\",\n" +
-                "            \"options\": {\n" +
-                "                \"option1\": \"Ad hominem\",\n" +
-                "                \"option2\": \"Post hoc ergo propter hoc\",\n" +
-                "                \"option3\": \"Argumentum ad populum\",\n" +
-                "                \"option4\": \"Petición de principio\"\n" +
-                "            },\n" +
-                "            \"answer\": \"Post hoc ergo propter hoc\"\n" +
+                "            \"question\": \"¿Cuál es el nombre de la falacia que consiste en atacar a la persona que hace una afirmación en lugar de refutar la afirmación en sí misma?\",\n" +
+                "            \"options\": [\n" +
+                "                \"Argumento ad ignorantiam\",\n" +
+                "                \"Argumento ad populum\",\n" +
+                "                \"Argumento ad hominem\",\n" +
+                "                \"Argumento ad baculum\"\n" +
+                "            ],\n" +
+                "            \"answer\": \"Argumento ad hominem\"\n" +
                 "        }\n" +
                 "    ]\n" +
                 "}";

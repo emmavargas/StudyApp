@@ -7,7 +7,7 @@ import lombok.NoArgsConstructor;
 @Data
 public class ItemChoiceDto {
     private String question;
-    private OptionsQuestionDto options;
+    private String[] options;
     private String answer;
 
 }

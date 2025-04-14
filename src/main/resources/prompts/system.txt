@@ -28,11 +28,7 @@ You must respond by strictly adhering to the following JSON structure:
   "items": [
     {
       "question": "<question is String>",
-      "options": [
-        "option1": "<option is String>",
-        "option2": "<option is String>",
-        "option3": "<option is String>",
-        "option4": "<option is String>"
+      "options": String[option1, option2, option3, option4
       ],
       "answer": <answer is String>
     },
