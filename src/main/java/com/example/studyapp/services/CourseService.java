@@ -193,5 +193,11 @@ public class CourseService {
     }
 
 
-
+    public Long getUserId() {
+        String username = getUsernameContextSecurity();
+        User user = userRepository.findByUsername(username).orElseThrow(
+                () -> new IllegalArgumentException("User not found")
+        );
+        return user.getId();
+    }
 }

@@ -16,6 +16,8 @@ import com.google.cloud.vertexai.generativeai.ResponseHandler;
 import org.springframework.context.annotation.Primary;
 import org.springframework.core.io.Resource;
 import org.springframework.core.io.ResourceLoader;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
 import java.io.IOException;
@@ -23,7 +25,7 @@ import java.nio.charset.StandardCharsets;
 import java.util.List;
 import java.util.concurrent.*;
 
-//@Primary
+@Primary
 @Service
 public class MultipleChoiceExamAiServiceImpl implements MultipleChoiceService{
 
@@ -71,7 +73,7 @@ public class MultipleChoiceExamAiServiceImpl implements MultipleChoiceService{
 
             GenerationConfig config = GenerationConfig.newBuilder()
                     .setTemperature(0.7f)
-                    .setMaxOutputTokens(3000)
+                    .setMaxOutputTokens(3500)
                     .build();
 
             GenerativeModel model = new GenerativeModel.Builder()
@@ -88,8 +90,7 @@ public class MultipleChoiceExamAiServiceImpl implements MultipleChoiceService{
             });
 
             try {
-                // Esperamos máximo 10 segundos
-                return future.get(8, TimeUnit.SECONDS);
+                return future.get(10, TimeUnit.SECONDS);
             } catch (TimeoutException e) {
                 future.cancel(true);
                 throw new RuntimeException("Tiempo de espera agotado: el modelo tardó demasiado en responder.", e);
@@ -127,6 +128,5 @@ public class MultipleChoiceExamAiServiceImpl implements MultipleChoiceService{
         }
         return data.toString();
     }
-
 
 }
