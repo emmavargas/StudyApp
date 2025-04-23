@@ -40,30 +40,32 @@ document.addEventListener('DOMContentLoaded', ()=> {
         const biblio = newBiblio.value.trim();
 
         if (title === "") {
-            alert('Ponele un titulo flaco')
+            alert('Ponele un titulo')
             return;
         } 
 
         const course = document.createElement("div");
         course.classList.add('course')
         course.innerHTML = `
-            <div class="course-header">
-                <div>
+                <div class="course-header">
+                    <div>
                         <h1>${title}</h1>
                         <p>0 temas</p>
-                        <hr>
-                        <p>Bibliografía:</p>
-                        <p class='bibliografia'>${biblio}</p>
-                </div>
-                <div class="course-controllers">
+                    </div>
+                    <div class="course-controllers">
                         <img src="./assets/img/delete.svg" class="delete-btn" id='delete' alt="">
                         <img src="./assets/img/edit.svg" class="edit-btn" id="edit" alt="">
+                    </div>
                 </div>
-            </div>
-            <div class="course-buttons">
-                <button>Generar examen</button>
-                <button>Ver temas</button>
-            </div>
+                <hr>
+                <div class="course-content">
+                    <p>Bibliografia:</p>
+                    <p class="bibliografia">${biblio}</p>  
+                </div>
+                <div class="course-buttons">
+                    <button>Generar examen</button>
+                    <button>Ver temas</button>
+                </div>
         `
         document.querySelector('.courses-container').appendChild(course)
         createModal.classList.add('hidden')

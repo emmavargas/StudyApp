@@ -58,13 +58,34 @@ main {
     width: 40%;
     padding: 20px;
     box-shadow: 1px 1px 5px 1px rgb(189, 189, 189);
+    transition: 300ms;
+}
+.course:hover {
+    transform: scale(1.02);
 }
 .course-header {
+    white-space: nowrap;
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
+}
+.course-header > div:first-child {
+    flex: 1;
+    min-width: 0;
+}
+.course-header h1 {
+    font-size: 1.2rem;
+    margin: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 100%;
 }
 .course p {
-    color: #333
+    color: #333;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 100%;
 }
 .course-controllers img{
     background-color: #222222;
