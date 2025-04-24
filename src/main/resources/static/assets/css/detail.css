@@ -24,8 +24,8 @@ body {
 
 .container {
     background-color: whitesmoke;
-    height: calc(99vh - 50px);
-    margin-top: 50px;
+    height: calc(99vh - 100px);
+    margin-top: 100px;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
@@ -36,7 +36,7 @@ body {
 
 .botones {
     width: 100%;
-    height: 70px;
+    height: 80px;
     display: flex;
     justify-content: space-between;
     margin-bottom: 15px;
@@ -214,4 +214,114 @@ body {
 #volver-materia:hover {
     background-color:rgba(45, 45, 45, 0.9);
     transform: scale(1.05);
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 10px;
+    position: fixed;
+    background-color: whitesmoke;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+.nav-center {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    justify-content: center;
+}
+.burger-menu {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+}
+#open-menu {
+    width: 30px;
+    height: 30px;
+}
+#menu-option-mobile {
+    padding: 10px;
+    transition: all;
+    border-radius: 5px;
+    transition-duration: 300ms;
+}
+header .logo span {
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+}
+.logo{
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 10px;
+}
+.logo img {
+    width: 50px;
+    height: 50px;
+}
+.mobilenav {
+    display: none;
+}
+.nav-center a {
+    text-decoration: none;
+    color: #444;
+    font-weight: 500;
+    transition: all 300ms
+}
+.nav-center a:hover {
+    color: black
+}
+.nav-center nav {
+    display: flex;
+    gap: 15px;
+}
+.nav-actions {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 30px;
+}
+.nav-actions-mobile {
+    align-items: center;
+}
+.nav-actions nav {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    justify-content: center;
+}
+.nav-actions button {
+    background-color: black;
+    color: white;
+    padding: 10px 15px 10px 15px;
+    margin: 5px 5px 5px 0px;
+    border-radius: 5px;
+    border: 0;
+    font-family: 'Inter', sans-serif;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+.nav-actions button a {
+    color: white;
+}
+.nav-actions button a:visited {
+    color: white;
+}
+button:hover {
+    background-color: #333
+}
+a{
+    text-decoration: none;
+    color: black;
+    font-family: 'Inter', sans-serif;
+    font-weight: 500;
+    font-size: 15px;
+}
+a:hover {
+    text-decoration: underline;
 }
