@@ -52,6 +52,11 @@ body {
 .right {
     width: 60%;
     flex:1;
+    overflow-x: hidden;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
 }
 
 .left, .right {
@@ -282,8 +287,8 @@ header .logo span {
 .nav-actions {
     display: flex;
     align-items: center;
-    justify-content: flex-end;
-    gap: 30px;
+    justify-content: flex-end; 
+    gap: 30px; 
 }
 .nav-actions-mobile {
     align-items: center;
@@ -324,4 +329,17 @@ a{
 }
 a:hover {
     text-decoration: underline;
+}
+
+#action-button-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#logout {
+    background-color: whitesmoke;
+    color: #EA3323;
+    font-size: 14px;
+    padding: 0;
 }
