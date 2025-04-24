@@ -1,11 +1,51 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="assets/css/detail.css">
 </head>
 <body>
-    Hola
+    <header class="head">
+        Hola
+    </header>
+    <div class="container">
+        
+        <div class="botones">
+            <div class="volver">
+                <button type="button" id="volver-materia">Volver a materias</button>
+            </div>
+            <div class="crear-eliminar">
+                <button type="button" id="crear-tema">Crear tema</button>
+                <button type="button" id="eliminar-tema">Eliminar tema</button>
+            </div>
+        </div>
+        <section class="left">
+            <div class="titulo">
+                <h2>Titulo de la Materia</h2>
+                <p>Cantidad de temas</p>
+            </div>
+            <div class="bibliografia">
+                <h2>Bibliografia</h2>
+                <p>Aca va la documentacion</p>
+            </div>
+            <div class="boton-examen">
+                <button type="button" id="boton">Generar Examen</button>
+            </div>
+        </section>
+        <section class="right">
+            <div class="titulo-descripcion">
+                <h2>Titulo del tema</h2>
+                <p>Descripcion del tema</p><br><br><br><br><br><br>
+
+                <h2>Bibliografia</h2>
+                <p>Descripcion de la bibliografia</p>
+                <div class="eliminar-tema">
+                    <button type="button" id="eliminar-tema-boton">X</button>
+                </div>
+            </div>
+        </section>
+    </div>
 </body>
 </html>

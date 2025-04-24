@@ -1,0 +1,217 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Inter', sans-serif;
+}
+
+body {
+    background-color: whitesmoke;
+}
+
+
+.head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 10px;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.container {
+    background-color: whitesmoke;
+    height: calc(99vh - 50px);
+    margin-top: 50px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    padding: 0 30px;
+    gap: 20px;
+    width: 100%;
+}
+
+.botones {
+    width: 100%;
+    height: 70px;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 15px;
+    box-shadow: rgba(0, 0, 0, 0.2) 0px 2px 4px 0px
+}
+
+.left {
+    width: 30%;
+    display: flex;
+    flex-direction: column;
+}
+
+.right {
+    width: 60%;
+    flex:1;
+}
+
+.left, .right {
+    height: 90%;
+    margin-top: -25px;
+}
+
+.titulo {
+    margin: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    gap: 10px;
+    height: 10%;
+    padding: 15px;
+    box-shadow: rgba(0, 0, 0, 0.2) 0px 2px 4px 0px;
+}
+
+.bibliografia {
+    margin: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    height: 50%;
+    padding: 15px;
+    box-shadow: rgba(0, 0, 0, 0.2) 0px 2px 4px 0px;
+}
+
+.boton-examen {
+    display: flex;
+    justify-content: center;
+    margin-top: 100px;
+}
+
+#boton {
+    background-color: #10b981;
+    color: white;
+    width: 60%;
+    height: 40px;
+    border-radius: 10px;
+    border: none;
+    font-weight: 500;
+    font-size: 15px;
+}
+
+#boton:hover {
+    background-color: #059669;
+    transform: scale(1.05);
+}
+
+.titulo-descripcion {
+    position: relative;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 2px 4px 0px;
+    margin: 10px;
+    height:35%;
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+}
+
+.eliminar-tema {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 30px;
+    height: 30px;
+    background-color: #f87171;
+    border-radius: 7px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    
+}
+
+
+#eliminar-tema:hover {
+    background-color: #b91c1c;
+    transform: scale(1.05);
+}
+
+.volver {
+    margin: 10px;
+    width: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.crear-eliminar {
+    margin: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 300px;
+    gap: 30px;
+}
+
+#crear-tema, #eliminar-tema {
+    height: 50px;
+    width: 150px;
+    cursor: pointer;
+    border: none;
+    border-radius: 10px;
+    font-weight: 500;
+    font-size: 15px;
+}
+
+#crear-tema {
+    background-color: black;
+    color: #ffffff;
+    transition: background-color 0.3s;
+}
+
+#eliminar-tema {
+    background-color: #dc2626;
+    color: white;
+    transition: background-color 0.3s;
+}
+
+#volver-materia {
+    height: 50px;
+    width: 200px;
+    cursor: pointer;
+    border: none;
+    border-radius: 5px;
+    background-color: black;
+    color: white;
+    font-weight: 500;
+    font-size: 15px;
+    transition: background-color 0.3s;
+    padding: 10px 20px 10px 20px;
+    font-family: 'Inter', sans-serif;
+}
+
+#eliminar-tema-boton {
+    width: 100%;
+    height: 100%;
+    background-color: #ef4444;
+    color: white;              
+    border: none;
+    border-radius: 7px;
+    font-weight: bold;
+    font-size: 14px;
+    cursor: pointer;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+#eliminar-tema-boton:hover {
+    background-color: #dc2626; /* rojo más intenso en hover (tailwind red-600) */
+    transform: scale(1.1);
+}
+
+#crear-tema:hover {
+    background-color:rgba(45, 45, 45, 0.9);
+    transform: scale(1.05);
+}
+
+#volver-materia:hover {
+    background-color:rgba(45, 45, 45, 0.9);
+    transform: scale(1.05);
+}
