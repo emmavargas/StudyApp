@@ -9,7 +9,6 @@ import lombok.NoArgsConstructor;
 @Data
 public class CourseDto {
     @NotBlank
-    @IsExistsCourse
     private String title;
     private String contentBibliography;
 }

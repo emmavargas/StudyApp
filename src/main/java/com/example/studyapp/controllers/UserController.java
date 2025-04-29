@@ -62,15 +62,10 @@ public class UserController {
         if (result.hasErrors()) {
             return infoValidation(result);
         }
-
         try {
             authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(userLoginDto.getUsername(), userLoginDto.getPassword()));
-
             UserDetails userDetails = jpaUserDetailsService.loadUserByUsername(userLoginDto.getUsername());
-
             String token = jwtUtils.generateToken(userDetails);
-
-
 //            Aqui estaba el token enviado, modificamos por una cookie
 //            Map<String, Object> response = new HashMap<>();
 //            response.put("token", "Bearer " + token);
@@ -84,7 +79,6 @@ public class UserController {
             jwtCookie.setMaxAge(24 * 60 * 60);
 
             jwtCookie.setSecure(false);
-
             response.addCookie(jwtCookie);
 
             Map<String, Object> responseBody = new HashMap<>();
@@ -96,6 +90,9 @@ public class UserController {
             error.put("message", "Credenciales inválidas");
             error.put("error", e.getMessage());
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(error);
+        }catch (Exception e) {
+            System.out.println("Error inesperado: " + e.getMessage());
+            throw e;
         }
     }
 

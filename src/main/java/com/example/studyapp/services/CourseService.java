@@ -9,12 +9,16 @@ import com.example.studyapp.entities.User;
 import com.example.studyapp.repositories.CourseRepository;
 import com.example.studyapp.repositories.TopicRepository;
 import com.example.studyapp.repositories.UserRepository;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.validation.BindingResult;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Service
 public class CourseService {
@@ -31,7 +35,6 @@ public class CourseService {
 
     @Transactional(readOnly = true)
     public List<Course> showCourses() {
-
         User user = userRepository.findByUsername(getUsernameContextSecurity()).orElseThrow();
         return user.getCourses();
     }
@@ -187,7 +190,7 @@ public class CourseService {
     private String getUsernameContextSecurity() {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         if (authentication == null || !authentication.isAuthenticated()) {
-            throw new IllegalStateException("Usuario no autenticado");
+            throw new IllegalStateException("User not authenticated");
         }
         return authentication.getName();
     }
@@ -201,3 +204,5 @@ public class CourseService {
         return user.getId();
     }
 }
+
+

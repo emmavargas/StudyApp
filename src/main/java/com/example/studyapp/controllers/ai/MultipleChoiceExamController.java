@@ -34,15 +34,11 @@ public class MultipleChoiceExamController {
     public ResponseEntity<?> generation(@RequestBody CourseExamDto courseExamDto, @PathVariable Long id) throws JsonProcessingException {
         Long userId = courseService.getUserId();
         Bucket bucket = resolveBucket(userId);
-        System.out.println(buckets);
-        System.out.println(buckets.size());
         if(bucket.tryConsume(1)){
             try {
                 ExamChoiceDto examChoiceDto = multipleChoiceService.getMultipleChoice(id, courseExamDto);
-                System.out.println(multipleChoiceService.getMultipleChoice(id, courseExamDto));
                 return ResponseEntity.ok(examChoiceDto);
             }catch (RuntimeException e){
-                System.out.println(e.getMessage());
                 return ResponseEntity.status(HttpStatus.GATEWAY_TIMEOUT).body(e.getMessage());
             }
         }else{
@@ -53,7 +49,7 @@ public class MultipleChoiceExamController {
     }
     private Bucket resolveBucket(Long userId) {
         return buckets.computeIfAbsent(userId, key -> {
-            Bandwidth limit = Bandwidth.classic(4, Refill.intervally(4, Duration.ofMinutes(5)));
+            Bandwidth limit = Bandwidth.classic(4, Refill.intervally(4, Duration.ofMinutes(1)));
             return Bucket.builder().addLimit(limit).build();
         });
     }
