@@ -5,6 +5,10 @@ import com.example.studyapp.dtos.TopicDto;
 import com.example.studyapp.entities.Course;
 import com.example.studyapp.entities.Topic;
 import com.example.studyapp.services.CourseService;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.media.Content;
+import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -20,6 +24,7 @@ public class CourseController {
         this.courseService = courseService;
     }
 
+
     @PostMapping("/courses")
     public ResponseEntity<?> addCourse(@RequestBody CourseDto courseDto) {
         Course course = courseService.saveCourse(courseDto);
@@ -32,7 +37,7 @@ public class CourseController {
     }
 
     @PutMapping("/courses/{idCourse}")
-    public ResponseEntity<?> updateCourse(@RequestParam Long idCourse, @RequestBody CourseDto courseDto) {
+    public ResponseEntity<?> updateCourse(@PathVariable Long idCourse, @RequestBody CourseDto courseDto) {
         try{
             Course course = courseService.updateCourse(courseDto,idCourse);
             return ResponseEntity.ok(course);
@@ -102,7 +107,14 @@ public class CourseController {
         }
     }
 
-
-
+    @GetMapping("/courses/{idCourse}/topics/{idTopic}")
+    public ResponseEntity<?> getTopic(@PathVariable Long idCourse, @PathVariable Long idTopic) {
+        try {
+            Topic topics = courseService.getTopic(idCourse,idTopic);
+            return ResponseEntity.ok(topics);
+        }catch (IllegalArgumentException e){
+            return ResponseEntity.badRequest().body(e.getMessage());
+        }
+    }
 
 }

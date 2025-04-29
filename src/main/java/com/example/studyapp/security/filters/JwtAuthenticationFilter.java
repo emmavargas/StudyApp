@@ -3,6 +3,7 @@ package com.example.studyapp.security.filters;
 import com.example.studyapp.security.JwtUtils;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
+import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -24,13 +25,47 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
         this.jwtUtils = jwtUtils;
     }
 
+
+    @Override
+    protected boolean shouldNotFilter(HttpServletRequest request) {
+        String path = request.getServletPath();
+        return path.startsWith("/swagger-ui") || path.startsWith("/v3/api-docs");
+    }
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
 
+        String token = null;
+
+        if(request.getCookies() != null){
+           for (Cookie cookie: request.getCookies()){
+                if("jwt".equals(cookie.getName())) {
+                    token = cookie.getValue();
+                    break;
+                }
+            }
+        }
+
+        if(token!=null){
+            if(jwtUtils.isTokenValid(token)){
+                String username = jwtUtils.user(token);
+                List<String> roles = jwtUtils.role(token);
+                List<SimpleGrantedAuthority> authorities = roles.stream().map(SimpleGrantedAuthority::new).toList();
+                UsernamePasswordAuthenticationToken auth = new UsernamePasswordAuthenticationToken(username, null, authorities);
+                SecurityContextHolder.getContext().setAuthentication(auth);
+            }else{
+                System.out.println("token invalido");
+            }
+        }else{
+            System.out.println("No se encontro la cookie");
+        }
+
+        filterChain.doFilter(request,response);
+
+
+        /*
         String header = request.getHeader("Authorization");
         if (header != null && header.startsWith("Bearer ")) {
             String token = header.replace("Bearer ", "");
-
             if (jwtUtils.isTokenValid(token)) {
                 String username = jwtUtils.user(token);
                 List<String> roles = jwtUtils.role(token);
@@ -40,8 +75,12 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
                 UsernamePasswordAuthenticationToken auth = new UsernamePasswordAuthenticationToken(username, null, authorities);
 
                 SecurityContextHolder.getContext().setAuthentication(auth);
+                System.out.println("token validado: " + token);
             }
-        }
-        filterChain.doFilter(request,response);
+        }else {
+            System.out.println("Token inválido o ausente");
+
+        }*/
+
     }
 }
