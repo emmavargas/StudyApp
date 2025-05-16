@@ -12,7 +12,7 @@ import java.lang.annotation.Target;
 @Retention(RetentionPolicy.RUNTIME)
 @Target({ElementType.FIELD, ElementType.METHOD})
 public @interface IsExistsCourse {
-    String message() default "Course already exists";
+    String message() default "Ya existe un curso con ese nombre. Use otro nombre.";
 
     Class<?>[] groups() default {};
 

@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/user")
+@RequestMapping("/api/user")
 public class CourseController {
 
     private final CourseService courseService;
@@ -19,6 +19,7 @@ public class CourseController {
     public CourseController(CourseService courseService) {
         this.courseService = courseService;
     }
+
 
     @PostMapping("/courses")
     public ResponseEntity<?> addCourse(@RequestBody CourseDto courseDto) {
@@ -32,7 +33,7 @@ public class CourseController {
     }
 
     @PutMapping("/courses/{idCourse}")
-    public ResponseEntity<?> updateCourse(@RequestParam Long idCourse, @RequestBody CourseDto courseDto) {
+    public ResponseEntity<?> updateCourse(@PathVariable Long idCourse, @RequestBody CourseDto courseDto) {
         try{
             Course course = courseService.updateCourse(courseDto,idCourse);
             return ResponseEntity.ok(course);
@@ -102,7 +103,14 @@ public class CourseController {
         }
     }
 
-
-
+    @GetMapping("/courses/{idCourse}/topics/{idTopic}")
+    public ResponseEntity<?> getTopic(@PathVariable Long idCourse, @PathVariable Long idTopic) {
+        try {
+            Topic topics = courseService.getTopic(idCourse,idTopic);
+            return ResponseEntity.ok(topics);
+        }catch (IllegalArgumentException e){
+            return ResponseEntity.badRequest().body(e.getMessage());
+        }
+    }
 
 }

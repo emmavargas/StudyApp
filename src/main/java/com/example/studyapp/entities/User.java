@@ -1,7 +1,6 @@
 package com.example.studyapp.entities;
 
 import com.example.studyapp.enums.Role;
-import com.example.studyapp.validations.IsExistsUsername;
 import jakarta.persistence.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -12,6 +11,7 @@ import java.util.List;
 @Entity
 @NoArgsConstructor
 @Data
+@Table(name = "users_app")
 public class User {
 
     @Id
@@ -19,7 +19,6 @@ public class User {
     private Long id;
 
     @Column(unique = true,nullable = false)
-    @IsExistsUsername
     private String username;
 
     @Column(nullable = false)
@@ -30,6 +29,9 @@ public class User {
 
     @Enumerated(EnumType.STRING)
     private Role role;
+
+    @Column(name= "is_premium",nullable = false)
+    private boolean isPremium = false;
 
     @OneToOne(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
     private Profile profile;

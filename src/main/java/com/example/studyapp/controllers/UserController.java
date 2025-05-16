@@ -1,10 +1,12 @@
 package com.example.studyapp.controllers;
 
-import com.example.studyapp.dtos.UserRegisterDto;
 import com.example.studyapp.dtos.UserLoginDto;
+import com.example.studyapp.dtos.UserRegisterDto;
 import com.example.studyapp.security.JpaUserDetailsService;
 import com.example.studyapp.security.JwtUtils;
 import com.example.studyapp.services.UserService;
+import jakarta.servlet.http.Cookie;
+import jakarta.servlet.http.HttpServletResponse;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -23,7 +25,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 @RestController
-@RequestMapping
+@RequestMapping("/api")
 public class UserController {
 
     @Autowired
@@ -54,29 +56,41 @@ public class UserController {
     }
 
     @PostMapping("/login")
-    public ResponseEntity<?> loginUsername(@Valid @RequestBody UserLoginDto userLoginDto, BindingResult result) {
+    public ResponseEntity<?> loginUsername(@Valid @RequestBody UserLoginDto userLoginDto, BindingResult result, HttpServletResponse response) {
         if (result.hasErrors()) {
             return infoValidation(result);
         }
-
         try {
             authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(userLoginDto.getUsername(), userLoginDto.getPassword()));
-
             UserDetails userDetails = jpaUserDetailsService.loadUserByUsername(userLoginDto.getUsername());
-
             String token = jwtUtils.generateToken(userDetails);
+//            Aqui estaba el token enviado, modificamos por una cookie
+//            Map<String, Object> response = new HashMap<>();
+//            response.put("token", "Bearer " + token);
+//            response.put("user", userDetails.getUsername());
+//            response.put("message", "Login existosoooo");
 
-            Map<String, Object> response = new HashMap<>();
-            response.put("token", "Bearer " + token);
-            response.put("user", userDetails.getUsername());
-            response.put("message", "Login existosoooo");
 
-            return ResponseEntity.ok(response);
+            Cookie jwtCookie = new Cookie("jwt", token);
+            jwtCookie.setHttpOnly(true);
+            jwtCookie.setPath("/");
+            jwtCookie.setMaxAge(24 * 60 * 60);
+
+            jwtCookie.setSecure(true);
+            response.addCookie(jwtCookie);
+
+            Map<String, Object> responseBody = new HashMap<>();
+            responseBody.put("user", userDetails.getUsername());
+            responseBody.put("message", "Login exitoso");
+            return ResponseEntity.ok(responseBody);
         } catch (AuthenticationException e) {
             Map<String, Object> error = new HashMap<>();
             error.put("message", "Credenciales inválidas");
             error.put("error", e.getMessage());
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(error);
+        }catch (Exception e) {
+            System.out.println("Error inesperado: " + e.getMessage());
+            throw e;
         }
     }
 
