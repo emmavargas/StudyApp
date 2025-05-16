@@ -4,12 +4,9 @@ import com.example.studyapp.dtos.CourseExamDto;
 import com.example.studyapp.dtos.examChoice.ExamChoiceDto;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import org.springframework.context.annotation.Primary;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
-@Primary
+//@Primary
 @Service
 public class MultipleChoiceExamStaticImpl implements MultipleChoiceService{
 

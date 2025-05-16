@@ -16,8 +16,6 @@ import com.google.cloud.vertexai.generativeai.ResponseHandler;
 import org.springframework.context.annotation.Primary;
 import org.springframework.core.io.Resource;
 import org.springframework.core.io.ResourceLoader;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
 import java.io.IOException;
@@ -25,7 +23,7 @@ import java.nio.charset.StandardCharsets;
 import java.util.List;
 import java.util.concurrent.*;
 
-//@Primary
+@Primary
 @Service
 public class MultipleChoiceExamAiServiceImpl implements MultipleChoiceService{
 

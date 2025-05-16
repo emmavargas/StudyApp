@@ -1,6 +1,5 @@
 package com.example.studyapp.dtos;
 
-import com.example.studyapp.validations.IsExistsUsername;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
@@ -11,7 +10,6 @@ import lombok.NoArgsConstructor;
 @Data
 public class UserRegisterDto {
     @NotBlank
-    @IsExistsUsername
     private String username;
 
     @Email(message = "Invalid email format")

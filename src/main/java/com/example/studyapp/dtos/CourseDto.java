@@ -1,6 +1,5 @@
 package com.example.studyapp.dtos;
 
-import com.example.studyapp.validations.IsExistsCourse;
 import jakarta.validation.constraints.NotBlank;
 import lombok.Data;
 import lombok.NoArgsConstructor;

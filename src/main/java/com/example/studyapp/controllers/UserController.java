@@ -1,12 +1,11 @@
 package com.example.studyapp.controllers;
 
-import com.example.studyapp.dtos.UserRegisterDto;
 import com.example.studyapp.dtos.UserLoginDto;
+import com.example.studyapp.dtos.UserRegisterDto;
 import com.example.studyapp.security.JpaUserDetailsService;
 import com.example.studyapp.security.JwtUtils;
 import com.example.studyapp.services.UserService;
 import jakarta.servlet.http.Cookie;
-import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,7 +26,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 @RestController
-@RequestMapping
+@RequestMapping("/api")
 public class UserController {
 
     @Autowired
@@ -77,6 +76,7 @@ public class UserController {
             jwtCookie.setHttpOnly(true);
             jwtCookie.setPath("/");
             jwtCookie.setMaxAge(24 * 60 * 60);
+
 
             jwtCookie.setSecure(false);
             response.addCookie(jwtCookie);
