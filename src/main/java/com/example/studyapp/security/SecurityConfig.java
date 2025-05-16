@@ -78,6 +78,7 @@ public class SecurityConfig {
                         .deleteCookies("jwt")
                         .invalidateHttpSession(true)
                         .clearAuthentication(true))
+
                 .cors(cors -> cors.configurationSource(corsConfigurationSource))
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authorizeHttpRequests(auth -> auth

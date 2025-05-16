@@ -5,6 +5,10 @@ import com.example.studyapp.dtos.TopicDto;
 import com.example.studyapp.entities.Course;
 import com.example.studyapp.entities.Topic;
 import com.example.studyapp.services.CourseService;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.media.Content;
+import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 

@@ -12,5 +12,4 @@ public class ExamChoiceDto {
     private String course;
     private String[] topics;
     List<ItemChoiceDto> items;
-
 }

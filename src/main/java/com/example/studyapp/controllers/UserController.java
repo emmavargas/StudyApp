@@ -14,6 +14,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.AuthenticationException;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -76,7 +77,8 @@ public class UserController {
             jwtCookie.setPath("/");
             jwtCookie.setMaxAge(24 * 60 * 60);
 
-            jwtCookie.setSecure(true);
+
+            jwtCookie.setSecure(false);
             response.addCookie(jwtCookie);
 
             Map<String, Object> responseBody = new HashMap<>();
